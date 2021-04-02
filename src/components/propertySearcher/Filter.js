@@ -77,9 +77,10 @@ const Filter = ({ filters, setFilters }) => {
   const setPriceFilter = (currency) => {
     const nonRemoved = filters.filter(
       (item) =>
-        item.field !== "filterCurrency" ||
-        item.field !== "filterPriceFrom" ||
-        item.field !== "filterPriceTo"
+        item.field !== "filterCurrency" &&
+        item.field !== "filterPriceFrom" &&
+        item.field !== "filterPriceTo" &&
+        item.field !== "price"
     );
     setFilters([
       ...nonRemoved,
@@ -339,7 +340,7 @@ const Filter = ({ filters, setFilters }) => {
             onClick={() => {
               const nonRemoved = filters.filter(
                 (item) =>
-                  item.field !== "filterSquareMetersFrom" ||
+                  item.field !== "filterSquareMetersFrom" &&
                   item.field !== "filterSquareMetersTo"
               );
               setFilters([
