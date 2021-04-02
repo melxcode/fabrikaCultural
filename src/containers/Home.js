@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Grid } from "@material-ui/core";
 import { Navigation } from "../components/navigation";
-import { Header } from "../components/header";
-import { Features } from "../components/features";
-import { About } from "../components/about";
-import { Services } from "../components/services";
-import { Gallery } from "../components/gallery";
-import { Testimonials } from "../components/testimonials";
-import { Team } from "../components/Team";
-import { Contact } from "../components/contact";
+import { Header } from "../components/home/header";
+import { Features } from "../components/home/features";
+import { About } from "../components/home/about";
+import { Services } from "../components/home/services";
+import { Gallery } from "../components/home/gallery";
+import { Testimonials } from "../components/home/testimonials";
+import { Team } from "../components/home/Team";
+import { Contact } from "../components/home/contact";
 import JsonData from "../data/Textos.json";
 
 const Home = () => {
