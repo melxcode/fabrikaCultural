@@ -19,6 +19,7 @@ const initialState = {
       ambientes: 3,
       sanitarios: 1,
       cliente: "carlos avero",
+      estado: "disponible",
       telefono: 11625468,
       email: "carlos@gmail.com",
       descripcion: "casa en loteo nuevo, sin gas todo electrico",

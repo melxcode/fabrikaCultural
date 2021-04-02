@@ -12,6 +12,7 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+import CloseIcon from "@material-ui/icons/Close";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -112,9 +113,6 @@ const Filter = ({ filters, setFilters }) => {
     ]);
     setSelectedCurrency(currency);
   };
-  useEffect(() => {
-    console.log(filters);
-  }, [filters]);
 
   return (
     <Box className={classes.root}>
@@ -211,7 +209,6 @@ const Filter = ({ filters, setFilters }) => {
       />
 
       <Autocomplete
-        multiple
         options={[
           { field: "filterCurrency", value: "pesos", name: "Pesos" },
           { field: "filterCurrency", value: "dolares", name: "Dolares" },
@@ -219,32 +216,33 @@ const Filter = ({ filters, setFilters }) => {
         fullWidth
         getOptionLabel={(option) => option.name}
         className={classes.input}
-        closeIcon={false}
+        closeIcon={
+          <CloseIcon
+            fontSize="small"
+            onClick={() => {
+              const nonRemoved = filters.filter(
+                (item) => item.field !== "filterCurrency"
+              );
+              setFilters(nonRemoved);
+            }}
+          />
+        }
         onChange={(e, value, name, instance) => {
           if (!instance) {
             return;
           }
-          setFilters([...filters, instance.option]);
+          const nonRemoved = filters.filter(
+            (item) => item.field !== "filterCurrency"
+          );
+          setFilters([...nonRemoved, instance.option]);
+          setSelectedCurrency(instance.option.value);
         }}
-        renderTags={(value) =>
-          filters
-            .filter((item) => item.field === "filterCurrency")
-            .map((option, index) => {
-              return (
-                <Chip
-                  variant="outlined"
-                  key={option.name}
-                  label={option.name}
-                  onDelete={() => {
-                    const nonRemoved = filters.filter(
-                      (item) => item.name !== option.name
-                    );
-                    setFilters(nonRemoved);
-                  }}
-                />
-              );
-            })
-        }
+        value={{
+          name:
+            selectedCurrency.charAt(0).toUpperCase() +
+            selectedCurrency.slice(1),
+        }}
+        key={selectedCurrency}
         renderInput={(params) => (
           <TextField {...params} variant="outlined" label="Tipo de Moneda" />
         )}
@@ -253,10 +251,10 @@ const Filter = ({ filters, setFilters }) => {
       <Grid container xs={12}>
         <Grid container lg={5} md={5} sm={10} xs={10}>
           <TextField
-            label="Desde"
+            label="Valor Desde"
             type="number"
             fullWidth
-            placeholder="Desde"
+            placeholder="Valor Desde"
             onChange={(e) => {
               setPrice({
                 ...price,
@@ -267,10 +265,10 @@ const Filter = ({ filters, setFilters }) => {
         </Grid>
         <Grid container lg={5} md={5} sm={10} xs={10}>
           <TextField
-            label="Hasta"
+            label="Valor Hasta"
             type="number"
             fullWidth
-            placeholder="Hasta"
+            placeholder="Valor Hasta"
             onChange={(e) => {
               setPrice({
                 ...price,
@@ -309,10 +307,10 @@ const Filter = ({ filters, setFilters }) => {
       <Grid container xs={12}>
         <Grid container lg={5} md={5} sm={10} xs={10}>
           <TextField
-            label="Desde"
+            label="Metros Desde"
             type="number"
             fullWidth
-            placeholder="Desde"
+            placeholder="Metros Desde"
             onChange={(e) => {
               setSquareMeters({
                 ...squareMeters,
@@ -323,10 +321,10 @@ const Filter = ({ filters, setFilters }) => {
         </Grid>
         <Grid container lg={5} md={5} sm={10} xs={10}>
           <TextField
-            label="Hasta"
+            label="Metros Hasta"
             type="number"
             fullWidth
-            placeholder="Hasta"
+            placeholder="Metros Hasta"
             onChange={(e) => {
               setSquareMeters({
                 ...squareMeters,
@@ -341,7 +339,8 @@ const Filter = ({ filters, setFilters }) => {
               const nonRemoved = filters.filter(
                 (item) =>
                   item.field !== "filterSquareMetersFrom" &&
-                  item.field !== "filterSquareMetersTo"
+                  item.field !== "filterSquareMetersTo" &&
+                  item.field !== "squareMeters"
               );
               setFilters([
                 ...nonRemoved,
@@ -356,7 +355,7 @@ const Filter = ({ filters, setFilters }) => {
                   name: squareMeters.to,
                 },
                 {
-                  field: "price",
+                  field: "squareMeters",
                   value: `Desde ${squareMeters.from} hasta ${squareMeters.from} Mt2`,
                   name: `Desde ${squareMeters.from} hasta ${squareMeters.from} Mt2`,
                   isVisual: true,
