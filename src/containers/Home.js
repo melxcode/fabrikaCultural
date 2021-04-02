@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Grid } from "@material-ui/core";
-import { Navigation } from "./components/navigation";
-import { Header } from "./components/header";
-import { Features } from "./components/features";
-import { About } from "./components/about";
-import { Services } from "./components/services";
-import { Gallery } from "./components/gallery";
-import { Testimonials } from "./components/testimonials";
-import { Team } from "./components/Team";
-import { Contact } from "./components/contact";
+import { Navigation } from "../components/navigation";
+import { Header } from "../components/header";
+import { Features } from "../components/features";
+import { About } from "../components/about";
+import { Services } from "../components/services";
+import { Gallery } from "../components/gallery";
+import { Testimonials } from "../components/testimonials";
+import { Team } from "../components/Team";
+import { Contact } from "../components/contact";
+import JsonData from "../data/Textos.json";
 
-const Home = ({ landingPageData }) => {
+const Home = () => {
+  const [landingPageData, setLandingPageData] = useState({});
+  useEffect(() => {
+    setLandingPageData(JsonData);
+  }, []);
   return (
     <Grid>
       <Navigation />
