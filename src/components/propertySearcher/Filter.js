@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   TextField,
   Chip,
@@ -7,16 +7,19 @@ import {
   Tabs,
   Tab,
   Grid,
+  Switch,
+  Typography,
   Button,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { useSelector } from "react-redux";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import CloseIcon from "@material-ui/icons/Close";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    padding: "10",
     background: "#FAFAFA",
+    height: "100%",
   },
   tabs: {
     marginTop: theme.spacing(3),
@@ -27,6 +30,12 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "20px",
     height: "1px",
     width: "100%",
+  },
+  input: {
+    marginTop: "20px",
+  },
+  priceFilter: {
+    padding: "10px",
   },
 }));
 
@@ -112,6 +121,23 @@ const Filter = ({ filters, setFilters }) => {
       },
     ]);
     setSelectedCurrency(currency);
+  };
+
+  const handleChangeSwitch = (e) => {
+    const activeFilters = filters.map((item) => item.field);
+    if (!activeFilters.includes("isTuristic")) {
+      setFilters([
+        ...filters,
+        {
+          field: "isTuristic",
+          value: "alquierTuristico",
+          name: "Alquier Turistico",
+        },
+      ]);
+    } else {
+      const nonRemoved = filters.filter((item) => item.field !== "isTuristic");
+      setFilters(nonRemoved);
+    }
   };
 
   return (
@@ -253,6 +279,7 @@ const Filter = ({ filters, setFilters }) => {
           <TextField
             label="Valor Desde"
             type="number"
+            className={classes.priceFilter}
             fullWidth
             placeholder="Valor Desde"
             onChange={(e) => {
@@ -266,6 +293,7 @@ const Filter = ({ filters, setFilters }) => {
         <Grid container lg={5} md={5} sm={10} xs={10}>
           <TextField
             label="Valor Hasta"
+            className={classes.priceFilter}
             type="number"
             fullWidth
             placeholder="Valor Hasta"
@@ -310,6 +338,7 @@ const Filter = ({ filters, setFilters }) => {
             label="Metros Desde"
             type="number"
             fullWidth
+            className={classes.priceFilter}
             placeholder="Metros Desde"
             onChange={(e) => {
               setSquareMeters({
@@ -324,6 +353,7 @@ const Filter = ({ filters, setFilters }) => {
             label="Metros Hasta"
             type="number"
             fullWidth
+            className={classes.priceFilter}
             placeholder="Metros Hasta"
             onChange={(e) => {
               setSquareMeters({
@@ -367,6 +397,25 @@ const Filter = ({ filters, setFilters }) => {
           </Button>
         </Grid>
       </Grid>
+      {currentTab !== "venta" && (
+        <Typography component="div">
+          <Typography> Alquiler Turistico</Typography>
+
+          <Grid component="label" container alignItems="center" spacing={1}>
+            <Grid item>NO</Grid>
+            <Grid item>
+              <Switch
+                checked={
+                  filters.filter((item) => item.field === "isTuristic").length
+                }
+                onChange={handleChangeSwitch}
+                name="checkedC"
+              />
+            </Grid>
+            <Grid item>SI</Grid>
+          </Grid>
+        </Typography>
+      )}
     </Box>
   );
 };

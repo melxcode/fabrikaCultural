@@ -3,6 +3,7 @@ import * as actionTypes from "../types/propertyTypes";
 const initialState = {
   properties: [
     {
+      id: "1",
       precio: 7000,
       archivos: [],
       zona: "merlo",
@@ -11,6 +12,7 @@ const initialState = {
       alquilerTuristico: false,
       moneda: "dolares",
       metros: 1000,
+      esDestacada: true,
       metrosCubiertos: 200,
       aEstrenar: false,
       latitud: 342,
@@ -26,17 +28,8 @@ const initialState = {
       direccion: "jose brochero 212",
     },
   ],
-  selectedProperties: {},
   filteredProperties: [],
-  filterPriceFrom: "",
-  filterPriceTo: "",
-  filterZone: "",
-  filterTypeProperty: "",
-  filterTypeOperation: "",
-  filterCurrency: "",
-  filterSquareMetersFrom: "",
-  filterSquareMetersTo: "",
-  filterTuristic: "",
+  selectedProperty: {},
 };
 
 export const propertyReducer = (state = initialState, action) => {
