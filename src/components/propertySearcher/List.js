@@ -32,8 +32,10 @@ const List = ({ filters, setFilters }) => {
         const propertyType = realFilters.filter(
           (item) => item.field === "filterTypeProperty"
         );
-        filteredProperties = filteredProperties.filter(
-          (item) => item.tipoDePropiedad === propertyType[0].value
+        const propertyTypes = propertyType.map((item) => item.value);
+
+        filteredProperties = filteredProperties.filter((item) =>
+          propertyTypes.includes(item.tipoDePropiedad)
         );
       }
 
