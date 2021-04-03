@@ -16,87 +16,95 @@ const List = ({ filters, setFilters }) => {
   const [listProperties, setListProperties] = useState([]);
 
   useEffect(() => {
+    const addFilters = (
+      activeFields,
+      filterField,
+      filteredProperties,
+      filterName
+    ) => {
+      if (activeFields.includes(filterField)) {
+        const filterObjects = realFilters.filter(
+          (item) => item.field === filterField
+        );
+        const filterValues = filterObjects.map((item) => item.value);
+        filteredProperties = filteredProperties.filter((item) =>
+          filterValues.includes(item[filterName])
+        );
+      }
+      return filteredProperties;
+    };
+
+    const addRangeFilters = (
+      activeFields,
+      fieldFrom,
+      fieldTo,
+      filteredProperties,
+      filterName
+    ) => {
+      if (activeFields.includes(fieldFrom) && activeFields.includes(fieldTo)) {
+        const from = realFilters.filter((item) => item.field === fieldFrom);
+        const to = realFilters.filter((item) => item.field === fieldTo);
+
+        const fromFilter = Number(from[0].value);
+        const toilter = Number(to[0].value);
+
+        filteredProperties = filteredProperties.filter((item) => {
+          if (item[filterName] > fromFilter && item[filterName] < toilter) {
+            return item;
+          }
+        });
+      }
+      return filteredProperties;
+    };
+
     const handleFilters = (realFilters) => {
       let filteredProperties = properties;
       const activeFields = realFilters.map((item) => item.field);
 
-      if (activeFields.includes("filterZone")) {
-        const zone = realFilters.filter((item) => item.field === "filterZone");
-        const zones = zone.map((item) => item.value);
-        filteredProperties = filteredProperties.filter((item) =>
-          zones.includes(item.zona)
-        );
-      }
+      filteredProperties = addFilters(
+        activeFields,
+        "filterZone",
+        filteredProperties,
+        "zona"
+      );
 
-      if (activeFields.includes("filterTypeProperty")) {
-        const propertyType = realFilters.filter(
-          (item) => item.field === "filterTypeProperty"
-        );
-        const propertyTypes = propertyType.map((item) => item.value);
+      filteredProperties = addFilters(
+        activeFields,
+        "filterTypeProperty",
+        filteredProperties,
+        "tipoDePropiedad"
+      );
 
-        filteredProperties = filteredProperties.filter((item) =>
-          propertyTypes.includes(item.tipoDePropiedad)
-        );
-      }
+      filteredProperties = addFilters(
+        activeFields,
+        "filterCurrency",
+        filteredProperties,
+        "moneda"
+      );
 
-      if (activeFields.includes("filterCurrency")) {
-        const currency = realFilters.filter(
-          (item) => item.field === "filterCurrency"
-        );
-        filteredProperties = filteredProperties.filter(
-          (item) => item.moneda === currency[0].value
-        );
-      }
-
-      if (activeFields.includes("filterTypeOperation")) {
-        const operation = realFilters.filter(
-          (item) => item.field === "filterTypeOperation"
-        );
-        filteredProperties = filteredProperties.filter(
-          (item) => item.tipoDeOperacion === operation[0].value
-        );
-      }
+      filteredProperties = addFilters(
+        activeFields,
+        "filterTypeOperation",
+        filteredProperties,
+        "tipoDeOperacion"
+      );
 
       //POR RANGO
-      if (
-        activeFields.includes("filterPriceFrom") &&
-        activeFields.includes("filterPriceTo")
-      ) {
-        const from = realFilters.filter(
-          (item) => item.field === "filterPriceFrom"
-        );
-        const to = realFilters.filter((item) => item.field === "filterPriceTo");
+      filteredProperties = addRangeFilters(
+        activeFields,
+        "filterPriceFrom",
+        "filterPriceTo",
+        filteredProperties,
+        "precio"
+      );
 
-        const fromPrice = Number(from[0].value);
-        const toPrice = Number(to[0].value);
-
-        filteredProperties = filteredProperties.filter((item) => {
-          if (item.precio > fromPrice && item.precio < toPrice) {
-            return item;
-          }
-        });
-      }
-
-      if (
-        activeFields.includes("filterSquareMetersFrom") &&
-        activeFields.includes("filterSquareMetersTo")
-      ) {
-        const from = realFilters.filter(
-          (item) => item.field === "filterSquareMetersFrom"
-        );
-        const to = realFilters.filter(
-          (item) => item.field === "filterSquareMetersTo"
-        );
-
-        const fromSquare = Number(from[0].value);
-        const toSquare = Number(to[0].value);
-
-        filteredProperties = filteredProperties.filter((item) => {
-          if (item.metros > fromSquare && item.metros < toSquare) {
-            return item;
-          }
-        });
-      }
+      filteredProperties = addRangeFilters(
+        activeFields,
+        "filterSquareMetersFrom",
+        "filterSquareMetersTo",
+        filteredProperties,
+        "metros"
+      );
 
       if (activeFields.includes("isTuristic")) {
         filteredProperties = filteredProperties.filter(
