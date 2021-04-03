@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Chip, Grid, Typography } from "@material-ui/core";
+import { Button, Chip, Grid, Typography } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   root: {},
   filters: {
@@ -8,6 +8,10 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid black",
     borderRadius: "10px",
     height: "35px",
+  },
+  topBar: {
+    display: "flex",
+    justifyContent: "space-between",
   },
 }));
 
@@ -38,7 +42,16 @@ const ShowFilters = ({ filters, setFilters }) => {
 
   return (
     <Grid className={classes.root}>
-      <Typography>Estas Buscando :</Typography>
+      <Grid className={classes.topBar}>
+        <Typography>Estas Buscando :</Typography>
+        <Button
+          onClick={() => {
+            setFilters([]);
+          }}
+        >
+          Limpiar filtros
+        </Button>
+      </Grid>
       <Grid className={classes.filters}>
         {filters
           .filter(

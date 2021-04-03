@@ -19,6 +19,11 @@ const useStyles = makeStyles((theme) => ({
   },
   showFilters: {
     marginTop: "100px",
+    paddingLeft: "10%",
+    paddingRight: "10%",
+  },
+  list: {
+    padding: "10px",
   },
 }));
 
@@ -43,8 +48,8 @@ const PropertySearcher = () => {
         <Box>
           <Filters filters={filters} setFilters={setFilters} />
         </Box>
-        <Box>
-          <List />
+        <Box className={classes.list}>
+          <List filters={filters} setFilters={setFilters} />
         </Box>
       </Grid>
     </Grid>

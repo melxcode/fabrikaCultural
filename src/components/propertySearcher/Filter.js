@@ -64,11 +64,18 @@ const Filter = ({ filters, setFilters }) => {
 
   const handleTabsChange = (e, value) => {
     setCurrentTab(value);
-    const nonRemoved = filters.filter(
+    let nonRemoved = filters.filter(
       (item) => item.field !== "filterTypeOperation"
     );
+    const hastTuristicFilter = nonRemoved.filter(
+      (item) => item.field === "isTuristic"
+    ).length;
+
     switch (value) {
       case "venta":
+        if (hastTuristicFilter) {
+          nonRemoved = nonRemoved.filter((item) => item.field !== "isTuristic");
+        }
         setFilters([
           ...nonRemoved,
           { field: "filterTypeOperation", value: "venta", name: "Venta" },
@@ -345,6 +352,7 @@ const Filter = ({ filters, setFilters }) => {
         </Grid>
         <Grid container xs={2}>
           <Button
+            disabled={!price.to || !price.from}
             onClick={() => {
               setPriceFilter("pesos");
             }}
@@ -357,6 +365,7 @@ const Filter = ({ filters, setFilters }) => {
             $
           </Button>
           <Button
+            disabled={!price.to || !price.from}
             onClick={() => {
               setPriceFilter("dolares");
             }}
@@ -403,6 +412,7 @@ const Filter = ({ filters, setFilters }) => {
         </Grid>
         <Grid container xs={2}>
           <Button
+            disabled={!squareMeters.to || !squareMeters.from}
             onClick={() => {
               const nonRemoved = filters.filter(
                 (item) =>
