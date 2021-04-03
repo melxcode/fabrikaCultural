@@ -3,8 +3,11 @@ import PropertyCard from "./PropertyCard";
 import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
+
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+    display: "flex",
+  },
 }));
 
 const List = () => {
@@ -13,7 +16,7 @@ const List = () => {
   const properties = useSelector((state) => state.propertyReducer.properties);
 
   return (
-    <Grid>
+    <Grid className={classes.root}>
       {properties.map((property) => {
         return <PropertyCard key={property.id} property={property} />;
       })}

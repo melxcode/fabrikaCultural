@@ -12,8 +12,11 @@ import {
   Button,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import Autocomplete from "@material-ui/lab/Autocomplete";
+import Autocomplete, {
+  createFilterOptions,
+} from "@material-ui/lab/Autocomplete";
 import CloseIcon from "@material-ui/icons/Close";
+import { filterAutocompleteOptions } from "../../utils/autocompleteUtils";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,6 +44,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Filter = ({ filters, setFilters }) => {
   const classes = useStyles();
+  const filter = createFilterOptions();
+
   const [selectedCurrency, setSelectedCurrency] = useState("");
   const [currentTab, setCurrentTab] = useState("todo");
   const [price, setPrice] = useState({
@@ -111,10 +116,10 @@ const Filter = ({ filters, setFilters }) => {
       },
       {
         field: "price",
-        value: `Desde ${price.from} hasta ${price.from} en ${
+        value: `Desde ${price.from} hasta ${price.to} en ${
           currency.charAt(0).toUpperCase() + currency.slice(1)
         }`,
-        name: `Desde ${price.from} hasta ${price.from} en  ${
+        name: `Desde ${price.from} hasta ${price.to} en  ${
           currency.charAt(0).toUpperCase() + currency.slice(1)
         }`,
         isVisual: true,
@@ -164,6 +169,17 @@ const Filter = ({ filters, setFilters }) => {
         fullWidth
         getOptionLabel={(option) => option.name}
         className={classes.input}
+        onKeyDown={(e) => {
+          if (e.key === "Backspace") {
+            const nonRemoved = filters.filter(
+              (item) => item.field !== "filterZone"
+            );
+            setFilters(nonRemoved);
+          }
+        }}
+        filterOptions={(options, params) => {
+          return filterAutocompleteOptions(options, params, filter, filters);
+        }}
         closeIcon={false}
         onChange={(e, value, name, instance) => {
           if (!instance) {
@@ -201,6 +217,17 @@ const Filter = ({ filters, setFilters }) => {
           { field: "filterTypeProperty", value: "cabania", name: "Cabaña" },
         ]}
         fullWidth
+        onKeyDown={(e) => {
+          if (e.key === "Backspace") {
+            const nonRemoved = filters.filter(
+              (item) => item.field !== "filterTypeProperty"
+            );
+            setFilters(nonRemoved);
+          }
+        }}
+        filterOptions={(options, params) => {
+          return filterAutocompleteOptions(options, params, filter, filters);
+        }}
         getOptionLabel={(option) => option.name}
         className={classes.input}
         closeIcon={false}
@@ -239,6 +266,17 @@ const Filter = ({ filters, setFilters }) => {
           { field: "filterCurrency", value: "pesos", name: "Pesos" },
           { field: "filterCurrency", value: "dolares", name: "Dolares" },
         ]}
+        onKeyDown={(e) => {
+          if (e.key === "Backspace") {
+            const nonRemoved = filters.filter(
+              (item) => item.field !== "filterCurrency"
+            );
+            setFilters(nonRemoved);
+          }
+        }}
+        filterOptions={(options, params) => {
+          return filterAutocompleteOptions(options, params, filter, filters);
+        }}
         fullWidth
         getOptionLabel={(option) => option.name}
         className={classes.input}
@@ -386,8 +424,8 @@ const Filter = ({ filters, setFilters }) => {
                 },
                 {
                   field: "squareMeters",
-                  value: `Desde ${squareMeters.from} hasta ${squareMeters.from} Mt2`,
-                  name: `Desde ${squareMeters.from} hasta ${squareMeters.from} Mt2`,
+                  value: `Desde ${squareMeters.from} hasta ${squareMeters.to} Mt2`,
+                  name: `Desde ${squareMeters.from} hasta ${squareMeters.to} Mt2`,
                   isVisual: true,
                 },
               ]);

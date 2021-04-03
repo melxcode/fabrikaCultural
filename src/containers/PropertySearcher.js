@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Navigation } from "../components/navigation";
 import Filters from "../components/propertySearcher/Filter";
 import List from "../components/propertySearcher/List";
+import ShowFilters from "../components/propertySearcher/ShowFIlters";
 import JsonData from "../data/Textos.json";
 import { Grid, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -9,7 +10,6 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   root: {},
   filters: {
-    marginTop: "160px",
     width: "30%",
     background: "white",
     paddingLeft: "30px",
@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
   main: {
     display: "flex",
   },
-  list: {
-    marginTop: "160px",
+  showFilters: {
+    marginTop: "100px",
   },
 }));
 
@@ -34,11 +34,16 @@ const PropertySearcher = () => {
   return (
     <Grid>
       <Navigation landingPageData={landingPageData} />
+      <Box className={classes.showFilters}>
+        {filters.length > 0 && (
+          <ShowFilters filters={filters} setFilters={setFilters} />
+        )}
+      </Box>
       <Grid className={classes.main}>
-        <Box className={classes.filters}>
+        <Box>
           <Filters filters={filters} setFilters={setFilters} />
         </Box>
-        <Box className={classes.list}>
+        <Box>
           <List />
         </Box>
       </Grid>
