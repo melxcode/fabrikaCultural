@@ -7,10 +7,11 @@ import { Grid } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
+    flexWrap: "wrap",
   },
 }));
 
-const List = ({ filters, setFilters }) => {
+const List = ({ filters, setFilters, setLoading }) => {
   const classes = useStyles();
   const properties = useSelector((state) => state.propertyReducer.properties);
   const [listProperties, setListProperties] = useState([]);
@@ -48,11 +49,9 @@ const List = ({ filters, setFilters }) => {
         const fromFilter = Number(from[0].value);
         const toilter = Number(to[0].value);
 
-        filteredProperties = filteredProperties.filter((item) => {
-          if (item[filterName] > fromFilter && item[filterName] < toilter) {
-            return item;
-          }
-        });
+        filteredProperties = filteredProperties.filter(
+          (item) => item[filterName] > fromFilter && item[filterName] < toilter
+        );
       }
       return filteredProperties;
     };
@@ -119,10 +118,10 @@ const List = ({ filters, setFilters }) => {
 
     if (!realFilters.length) {
       setListProperties(properties);
-      return;
+    } else {
+      const filteredProperties = handleFilters(realFilters);
+      setListProperties(filteredProperties);
     }
-    const filteredProperties = handleFilters(realFilters);
-    setListProperties(filteredProperties);
   }, [filters, properties]);
 
   return (

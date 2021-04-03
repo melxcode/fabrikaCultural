@@ -1,5 +1,55 @@
 import * as actionTypes from "../types/propertyTypes";
 
+/* 
+COMO INGRESAR LOS TIPOS DE DATOS
+
+id: Numero de casa de la pagina entre comillas = EJEMPLO  "68",
+
+precio: Numero sin comillas y sin puntos o comas = EJEMPLO 70000
+
+archivos: [],
+
+fotoPrincipal: Link de la foto entre comillas = EJEMPLO "https://i.ibb.co/f9fJV75/casa1.jpg",
+
+zona: Palabras en minusculas y sin espacio = EJEMPLO "carpinteria" o sino "cerroDeOro",
+
+tipoDePropiedad: Palabra en minusculas enre comillas = EJEMPLO "casa"
+
+tipoDeOperacion: Palabra en minusculas enre comillas = EJEMPLO "alquiler",
+
+alquilerTuristico: Esto es verdadero o falso en ingles sin comillas EJEMPLO = true o false
+
+moneda: Palabra en minusculas enre comillas = EJEMPLO "pesos",
+
+metros: Numero sin comillas y sin puntos o comas = EJEMPLO 2000,
+
+esDestacada: Esto es verdadero o falso en ingles sin comillas EJEMPLO = true o false,
+
+metrosCubiertos:  Numero sin comillas y sin puntos o comas = EJEMPLO  200,
+
+latitud: 342,
+
+longitud: 342,
+
+servicios: List de Palabras en minusculas enre comillas adentro de [] EJEMPLO = ["luz", "agua", "wifi"],
+
+ambientes: Numero sin comillas y sin puntos o comas = EJEMPLO 4,
+
+sanitarios: Numero sin comillas y sin puntos o comas = EJEMPLO 2,
+
+cliente: Este puede ir con espacios mayusculas y todo , solo importa que este entre comillas = EJEMPLO "carlos avero",
+
+estado: unicos valores posibles son  "disponible" o "alquilada" o "vendida",
+
+telefono: Numero sin comillas y sin puntos o comas = 11625468,
+
+email: el mail entre comillas "carlos@gmail.com",
+
+descripcion: Solo importa que este todo entre comillas = EJMPLO  "Nueva esta flama papa aprovechala",
+
+direccion: Solo importa que este todo entre comillas = EJMPLO "segui 212",
+ */
+
 const initialState = {
   properties: [
     {
@@ -86,7 +136,7 @@ const initialState = {
       archivos: [],
       fotoPrincipal: "https://i.ibb.co/D4hKNRL/casa-2.jpg",
       zona: "merlo",
-      tipoDePropiedad: "cabania",
+      tipoDePropiedad: "cabaña",
       tipoDeOperacion: "alquiler",
       alquilerTuristico: false,
       moneda: "dolares",
@@ -148,6 +198,31 @@ const initialState = {
       servicios: ["luz", "agua", "wifi", "ABL"],
       ambientes: 4,
       sanitarios: 2,
+      cliente: "carlos avero",
+      estado: "disponible",
+      telefono: 11625468,
+      email: "carlos@gmail.com",
+      descripcion: "Nueva esta flama papa aprovechala",
+      direccion: "segui 212",
+    },
+    {
+      id: "7",
+      precio: 40000,
+      archivos: [],
+      fotoPrincipal: "https://i.ibb.co/59Dc54N/casa-4.jpg",
+      zona: "cerroDeOro",
+      tipoDePropiedad: "casa",
+      tipoDeOperacion: "venta",
+      alquilerTuristico: false,
+      moneda: "dolares",
+      metros: 3000,
+      esDestacada: true,
+      metrosCubiertos: 200,
+      latitud: 342,
+      longitud: 342,
+      servicios: ["luz", "agua", "wifi", "ABL"],
+      ambientes: 2,
+      sanitarios: 1,
       cliente: "carlos avero",
       estado: "disponible",
       telefono: 11625468,

@@ -4,7 +4,7 @@ import Filters from "../components/propertySearcher/Filter";
 import List from "../components/propertySearcher/List";
 import ShowFilters from "../components/propertySearcher/ShowFIlters";
 import JsonData from "../data/Textos.json";
-import { Grid, Box } from "@material-ui/core";
+import { Grid, Box, CircularProgress } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -32,6 +32,7 @@ const PropertySearcher = () => {
 
   const [landingPageData, setLandingPageData] = useState({});
   const [filters, setFilters] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLandingPageData(JsonData);
   }, []);
@@ -49,7 +50,15 @@ const PropertySearcher = () => {
           <Filters filters={filters} setFilters={setFilters} />
         </Box>
         <Box className={classes.list}>
-          <List filters={filters} setFilters={setFilters} />
+          {loading ? (
+            <CircularProgress />
+          ) : (
+            <List
+              filters={filters}
+              setFilters={setFilters}
+              setLoading={setLoading}
+            />
+          )}
         </Box>
       </Grid>
     </Grid>

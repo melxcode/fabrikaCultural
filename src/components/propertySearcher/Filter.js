@@ -159,6 +159,7 @@ const Filter = ({ filters, setFilters }) => {
         onChange={handleTabsChange}
         scrollButtons="auto"
         value={currentTab}
+        indicatorColor="primary"
         variant="scrollable"
       >
         {tabs.map((tab) => (
@@ -171,6 +172,7 @@ const Filter = ({ filters, setFilters }) => {
         multiple
         options={[
           { field: "filterZone", value: "merlo", name: "Merlo" },
+          { field: "filterZone", value: "cerroDeOro", name: "Cerro De Oro" },
           { field: "filterZone", value: "carpinteria", name: "Carpinteria" },
         ]}
         fullWidth
@@ -221,7 +223,7 @@ const Filter = ({ filters, setFilters }) => {
         multiple
         options={[
           { field: "filterTypeProperty", value: "casa", name: "Casa" },
-          { field: "filterTypeProperty", value: "cabania", name: "Cabaña" },
+          { field: "filterTypeProperty", value: "cabaña", name: "Cabaña" },
         ]}
         fullWidth
         onKeyDown={(e) => {
@@ -453,6 +455,7 @@ const Filter = ({ filters, setFilters }) => {
             <Grid item>NO</Grid>
             <Grid item>
               <Switch
+                color="primary"
                 checked={
                   filters.filter((item) => item.field === "isTuristic").length
                 }
