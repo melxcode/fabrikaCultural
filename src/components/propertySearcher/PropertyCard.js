@@ -1,19 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Box,
-  CardMedia,
   CardContent,
   CardActions,
   IconButton,
   Typography,
   Card,
-  Icon,
+  Button,
 } from "@material-ui/core";
 import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
-
+import AddIcon from "@material-ui/icons/Add";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import {
   formatMoney,
@@ -21,16 +20,36 @@ import {
   removeCamelCase,
 } from "../../utils/format";
 import InfoIcon from "./IconInfo";
+import ShareLinkModal from "./ShareLinkModal";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 290,
-    borderRadius: "10%",
+    width: 310,
+    borderRadius: "5%",
     margin: "10px",
   },
   media: {
-    height: "100px",
-    paddingTop: "56.25%", // 16:9
+    height: "250px",
+    display: "flex",
+    justifyContent: "center",
+    cursor: "pointer",
+    alignItems: "center",
+    paddingTop: "56.25%",
+
+    "&:hover": {
+      opacity: "0.5",
+    },
+  },
+  mediaText: {
+    marginTop: "-150px",
+    zIndex: -1,
+    fontSize: "20px",
+    fontWeight: "bolder",
+    color: "white",
+    "&:hover": {
+      zIndex: 2,
+      opacity: "1",
+    },
   },
   expand: {
     transform: "rotate(0deg)",
@@ -62,25 +81,39 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "10px",
     marginBottom: "10px",
   },
+  price: {
+    fontSize: "16px",
+    fontWeight: "bold",
+  },
 }));
 
 const PropertyCard = ({ property }) => {
   const classes = useStyles();
+  const [openModal, setOpenModal] = useState(false);
 
   return (
     <Card className={classes.root}>
-      <CardMedia
+      <div
         className={classes.media}
+        style={{
+          backgroundImage: `url(${property.fotoPrincipal})`,
+          backgroundSize: "100% 100%",
+        }}
         image={property.fotoPrincipal}
-        title="Foto principal"
-      />
+        alt="Foto principal"
+      >
+        <Typography className={classes.mediaText}>Ver mas</Typography>
+      </div>
       <CardContent>
         <Box className={classes.topData}>
-          <Typography>
+          <Typography className={classes.price}>
             {property.moneda === "dolares" ? "USD" : "$"}{" "}
             {formatMoney(property.precio)}
           </Typography>
-          <Typography>{property.tipoDeOperacion.toUpperCase()}</Typography>
+
+          <Typography style={{ fontSize: "bold" }}>
+            {property.tipoDeOperacion.toUpperCase()}
+          </Typography>
         </Box>
         <Box className={classes.zone}>
           <InfoIcon
@@ -129,10 +162,24 @@ const PropertyCard = ({ property }) => {
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
-        <IconButton aria-label="share">
+        <IconButton
+          onClick={() => {
+            setOpenModal(true);
+          }}
+          aria-label="share"
+        >
           <ShareIcon />
         </IconButton>
+        <Button aria-label="share">
+          <AddIcon />
+          INFO
+        </Button>
       </CardActions>
+      <ShareLinkModal
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        propertyId={property.id}
+      />
     </Card>
   );
 };

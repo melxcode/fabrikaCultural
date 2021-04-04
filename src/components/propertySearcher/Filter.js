@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     padding: "10",
     background: "#FAFAFA",
-    height: "100%",
+    height: "40%",
   },
   tabs: {
     marginTop: theme.spacing(3),
