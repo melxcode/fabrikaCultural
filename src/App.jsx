@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./containers/Home";
 import PropertySearcher from "./containers/PropertySearcher";
+import SelectedProperty from "./containers/SelectedProperty";
 import SmoothScroll from "smooth-scroll";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
@@ -15,9 +16,14 @@ const App = () => {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/propiedades" exact component={PropertySearcher} />
+        <Route path="/propiedades/:id" exact component={SelectedProperty} />
       </Switch>
     </Router>
   );
 };
 
 export default App;
+
+/* <Route path="*">
+            <NoMatch />
+          </Route> */

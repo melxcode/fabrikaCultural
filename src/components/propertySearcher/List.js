@@ -50,7 +50,8 @@ const List = ({ filters, setFilters, setLoading }) => {
         const toilter = Number(to[0].value);
 
         filteredProperties = filteredProperties.filter(
-          (item) => item[filterName] > fromFilter && item[filterName] < toilter
+          (item) =>
+            item[filterName] >= fromFilter && item[filterName] <= toilter
         );
       }
       return filteredProperties;

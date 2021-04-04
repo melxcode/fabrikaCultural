@@ -21,6 +21,7 @@ import {
 } from "../../utils/format";
 import InfoIcon from "./IconInfo";
 import ShareLinkModal from "./ShareLinkModal";
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -90,11 +91,15 @@ const useStyles = makeStyles((theme) => ({
 const PropertyCard = ({ property }) => {
   const classes = useStyles();
   const [openModal, setOpenModal] = useState(false);
+  const history = useHistory();
 
   return (
     <Card className={classes.root}>
       <div
         className={classes.media}
+        onClick={() => {
+          window.open(`/propiedades/${property.id}`);
+        }}
         style={{
           backgroundImage: `url(${property.fotoPrincipal})`,
           backgroundSize: "100% 100%",
@@ -170,7 +175,12 @@ const PropertyCard = ({ property }) => {
         >
           <ShareIcon />
         </IconButton>
-        <Button aria-label="share">
+        <Button
+          aria-label="info"
+          onClick={() => {
+            window.open(`/propiedades/${property.id}`);
+          }}
+        >
           <AddIcon />
           INFO
         </Button>

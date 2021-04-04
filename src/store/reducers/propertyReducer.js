@@ -39,7 +39,7 @@ sanitarios: Numero sin comillas y sin puntos o comas = EJEMPLO 2,
 
 cliente: Este puede ir con espacios mayusculas y todo , solo importa que este entre comillas = EJEMPLO "carlos avero",
 
-estado: unicos valores posibles son  "disponible" o "alquilada" o "vendida",
+estado: unicos valores posibles son  "disponible" o "alquilada",
 
 telefono: Numero sin comillas y sin puntos o comas = 11625468,
 
