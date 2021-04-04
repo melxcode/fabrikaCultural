@@ -31,7 +31,7 @@ latitud: 342,
 
 longitud: 342,
 
-servicios: List de Palabras en minusculas enre comillas adentro de [] EJEMPLO = ["luz", "agua", "wifi"],
+servicios: List de Palabras  enre comillas adentro de [] EJEMPLO = ["luz", "agua", "wifi"],
 
 ambientes: Numero sin comillas y sin puntos o comas = EJEMPLO 4,
 
@@ -69,7 +69,8 @@ const initialState = {
       aEstrenar: false,
       latitud: 342,
       longitud: 342,
-      servicios: ["luz", "agua", "wifi", "ABL"],
+      servicios: ["Luz", "Agua", "Wifi", "ABL"],
+      requisitos: ["1 Mes de deposito", "Garante", "Comision inmobiliaria"],
       ambientes: 3,
       sanitarios: 1,
       cliente: "carlos avero",
@@ -95,7 +96,9 @@ const initialState = {
       metrosCubiertos: 500,
       latitud: 342,
       longitud: 342,
-      servicios: ["luz", "agua", "wifi", "ABL"],
+      servicios: ["Luz", "Agua", "Wifi", "ABL"],
+      requisitos: ["1 Mes de deposito", "Garante", "Comision inmobiliaria"],
+
       ambientes: 4,
       sanitarios: 2,
       cliente: "carlos avero",
@@ -120,7 +123,9 @@ const initialState = {
       metrosCubiertos: 1000,
       latitud: 342,
       longitud: 342,
-      servicios: ["luz", "agua", "wifi", "ABL"],
+      servicios: ["Luz", "Agua", "Wifi", "ABL"],
+      requisitos: ["1 Mes de deposito", "Garante", "Comision inmobiliaria"],
+
       ambientes: 4,
       sanitarios: 2,
       cliente: "carlos avero",
@@ -145,7 +150,9 @@ const initialState = {
       metrosCubiertos: 200,
       latitud: 342,
       longitud: 342,
-      servicios: ["luz", "agua", "wifi", "ABL"],
+      servicios: ["Luz", "Agua", "Wifi", "ABL"],
+      requisitos: ["1 Mes de deposito", "Garante", "Comision inmobiliaria"],
+
       ambientes: 4,
       sanitarios: 2,
       cliente: "carlos avero",
@@ -170,7 +177,9 @@ const initialState = {
       metrosCubiertos: 200,
       latitud: 342,
       longitud: 342,
-      servicios: ["luz", "agua", "wifi", "ABL"],
+      servicios: ["Luz", "Agua", "Wifi", "ABL"],
+      requisitos: ["1 Mes de deposito", "Garante", "Comision inmobiliaria"],
+
       ambientes: 4,
       sanitarios: 2,
       cliente: "carlos avero",
@@ -195,7 +204,9 @@ const initialState = {
       metrosCubiertos: 200,
       latitud: 342,
       longitud: 342,
-      servicios: ["luz", "agua", "wifi", "ABL"],
+      servicios: ["Luz", "Agua", "Wifi", "ABL"],
+      requisitos: ["1 Mes de deposito", "Garante", "Comision inmobiliaria"],
+
       ambientes: 4,
       sanitarios: 2,
       cliente: "carlos avero",
@@ -220,7 +231,9 @@ const initialState = {
       metrosCubiertos: 200,
       latitud: 342,
       longitud: 342,
-      servicios: ["luz", "agua", "wifi", "ABL"],
+      servicios: ["Luz", "Agua", "Wifi", "ABL"],
+      requisitos: ["1 Mes de deposito", "Garante", "Comision inmobiliaria"],
+
       ambientes: 2,
       sanitarios: 1,
       cliente: "carlos avero",

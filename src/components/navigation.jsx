@@ -1,4 +1,8 @@
+import React from "react";
+import { useHistory } from "react-router-dom";
+
 export const Navigation = (props) => {
+  const history = useHistory();
   return (
     <nav id="menu" className="/* navbar navbar-default navbar-fixed-top */">
       <div className="container">
@@ -51,9 +55,15 @@ export const Navigation = (props) => {
               </a>
             </li>
             <li>
-              <a href="#team" className="page-scroll">
-                Team
-              </a>
+              <p
+                href="#team"
+                className="page-scroll"
+                onClick={() => {
+                  history.push("/propiedades");
+                }}
+              >
+                Propiedades
+              </p>
             </li>
             <li>
               <a href="#contact" className="page-scroll">

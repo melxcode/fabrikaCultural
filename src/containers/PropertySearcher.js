@@ -46,9 +46,7 @@ const PropertySearcher = () => {
         )}
       </Box>
       <Grid className={classes.main}>
-        <Box>
-          <Filters filters={filters} setFilters={setFilters} />
-        </Box>
+        <Filters filters={filters} setFilters={setFilters} />
         <Box className={classes.list}>
           {loading ? (
             <CircularProgress />
