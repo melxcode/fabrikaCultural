@@ -48,6 +48,9 @@ email: el mail entre comillas "carlos@gmail.com",
 descripcion: Solo importa que este todo entre comillas = EJMPLO  "Nueva esta flama papa aprovechala",
 
 direccion: Solo importa que este todo entre comillas = EJMPLO "segui 212",
+
+ publicadoEn: Ente comillas "YYYY/MM/DD" es decir "anio/mes/dia" = EJEMPLO "2021/05/15",
+
  */
 
 const initialState = {
@@ -79,6 +82,7 @@ const initialState = {
       email: "carlos@gmail.com",
       descripcion: "casa en loteo nuevo, sin gas todo electrico",
       direccion: "jose brochero 212",
+      publicadoEn: "2021/02/15",
     },
     {
       id: "2",
@@ -94,6 +98,7 @@ const initialState = {
       metros: 2000,
       esDestacada: false,
       metrosCubiertos: 500,
+      publicadoEn: "2021/02/01",
       latitud: 342,
       longitud: 342,
       servicios: ["Luz", "Agua", "Wifi", "ABL"],
@@ -116,6 +121,7 @@ const initialState = {
       zona: "carpinteria",
       tipoDePropiedad: "casa",
       tipoDeOperacion: "alquiler",
+      publicadoEn: "2021/03/20",
       alquilerTuristico: true,
       moneda: "pesos",
       metros: 2000,
@@ -148,6 +154,8 @@ const initialState = {
       metros: 500,
       esDestacada: true,
       metrosCubiertos: 200,
+      publicadoEn: "2020/03/03",
+
       latitud: 342,
       longitud: 342,
       servicios: ["Luz", "Agua", "Wifi", "ABL"],
@@ -176,6 +184,8 @@ const initialState = {
       esDestacada: true,
       metrosCubiertos: 200,
       latitud: 342,
+      publicadoEn: "2020/12/15",
+
       longitud: 342,
       servicios: ["Luz", "Agua", "Wifi", "ABL"],
       requisitos: ["1 Mes de deposito", "Garante", "Comision inmobiliaria"],
@@ -197,6 +207,8 @@ const initialState = {
       zona: "merlo",
       tipoDePropiedad: "casa",
       tipoDeOperacion: "venta",
+      publicadoEn: "2021/04/06",
+
       alquilerTuristico: false,
       moneda: "dolares",
       metros: 10000,
@@ -219,7 +231,13 @@ const initialState = {
     {
       id: "7",
       precio: 40000,
-      archivos: [],
+      archivos: [
+        "https://i.ibb.co/59Dc54N/casa-4.jpg",
+        "https://i.ibb.co/D4hKNRL/casa-2.jpg",
+        "https://i.ibb.co/d4PLzt0/casa-3.jpg",
+        "https://i.ibb.co/f9fJV75/casa1.jpg",
+      ],
+      video: "",
       fotoPrincipal: "https://i.ibb.co/59Dc54N/casa-4.jpg",
       zona: "cerroDeOro",
       tipoDePropiedad: "casa",
@@ -229,11 +247,11 @@ const initialState = {
       metros: 3000,
       esDestacada: true,
       metrosCubiertos: 200,
+      publicadoEn: "2021/03/21",
       latitud: 342,
       longitud: 342,
       servicios: ["Luz", "Agua", "Wifi", "ABL"],
       requisitos: ["1 Mes de deposito", "Garante", "Comision inmobiliaria"],
-
       ambientes: 2,
       sanitarios: 1,
       cliente: "carlos avero",
