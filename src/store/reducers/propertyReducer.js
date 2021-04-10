@@ -5,11 +5,20 @@ COMO INGRESAR LOS TIPOS DE DATOS
 
 id: Numero de casa de la pagina entre comillas = EJEMPLO  "68",
 
+nombre: una oracion descriptiva = EJEMPLO  "Oportunidad Espaciosa Casa de categoria "
+
 precio: Numero sin comillas y sin puntos o comas = EJEMPLO 70000
 
 archivos: [],
 
 fotoPrincipal: Link de la foto entre comillas = EJEMPLO "https://i.ibb.co/f9fJV75/casa1.jpg",
+
+archivos : una lista de links de las fotos SOLO DE FOTOS : EJEMPLO = 
+                    [
+                  "https://i.ibb.co/f9fJV75/casa1.jpg",
+                  "https://i.ibb.co/f9fJV75/casa2.jpg",
+                  "https://i.ibb.co/f9fJV75/casa3.jpg"
+                    ]
 
 zona: Palabras en minusculas y sin espacio = EJEMPLO "carpinteria" o sino "cerroDeOro",
 
@@ -57,6 +66,7 @@ const initialState = {
   properties: [
     {
       id: "1",
+      nombre: "Oportunidad Espaciosa Casa de categoria ",
       precio: 7000,
       archivos: [],
       zona: "merlo",
@@ -86,6 +96,7 @@ const initialState = {
     },
     {
       id: "2",
+      nombre: "Oportunidad Espaciosa Casa de categoria ",
       precio: 70000,
       archivos: [],
       fotoPrincipal:
@@ -115,6 +126,7 @@ const initialState = {
     },
     {
       id: "3",
+      nombre: "Oportunidad Espaciosa Casa de categoria ",
       precio: 40000,
       archivos: [],
       fotoPrincipal: "https://i.ibb.co/f9fJV75/casa1.jpg",
@@ -143,6 +155,7 @@ const initialState = {
     },
     {
       id: "4",
+      nombre: "Oportunidad Espaciosa Casa de categoria ",
       precio: 500,
       archivos: [],
       fotoPrincipal: "https://i.ibb.co/D4hKNRL/casa-2.jpg",
@@ -172,6 +185,7 @@ const initialState = {
     },
     {
       id: "5",
+      nombre: "Oportunidad Espaciosa Casa de categoria ",
       precio: 100000000,
       archivos: [],
       fotoPrincipal: "https://i.ibb.co/d4PLzt0/casa-3.jpg",
@@ -201,6 +215,7 @@ const initialState = {
     },
     {
       id: "6",
+      nombre: "Oportunidad Espaciosa Casa de categoria ",
       precio: 90000,
       archivos: [],
       fotoPrincipal: "https://i.ibb.co/59Dc54N/casa-4.jpg",
@@ -230,6 +245,7 @@ const initialState = {
     },
     {
       id: "7",
+      nombre: "Oportunidad Espaciosa Casa de categoria ",
       precio: 40000,
       archivos: [
         "https://i.ibb.co/59Dc54N/casa-4.jpg",
