@@ -14,6 +14,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import Header from "../components/selectedProperty/Header";
+import PropertuCard from "../components/propertySearcher/PropertyCard";
 import { useParams } from "react-router";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -55,15 +56,15 @@ const useStyles = makeStyles((theme) => ({
   listItem: {
     display: "flex",
     justifyContent: "space-between",
-    width: "50%",
     borderBottom: "1px solid #bfbfbf",
   },
   mainImg: {
-    flex: 1,
+    width: "130%",
     height: "60vh",
   },
   imgContainer: {
     display: "flex",
+    height: "60%",
   },
   operationTypeChip: {
     background: "#3B4CA9",
@@ -97,6 +98,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "20px",
     fontWeight: "bold",
   },
+  midImg: {
+    height: "50%",
+    width: "100%",
+  },
+  sameZoneProperty: { display: "flex" },
 }));
 
 const PropertySearcher = () => {
@@ -137,192 +143,220 @@ const PropertySearcher = () => {
               alt="propiedad"
               className={classes.mainImg}
             />
-            {selectedProperty.archivos.length && (
-              <img
-                src={selectedProperty.archivos[1]}
-                alt="propiedad"
-                className={classes.mainImg}
-              />
+            {selectedProperty.archivos.length &&
+            selectedProperty.archivos.length > 2 ? (
+              <Grid style={{ objectFit: "contain" }}>
+                <img
+                  src={selectedProperty.archivos[1]}
+                  alt="propiedad"
+                  className={classes.midImg}
+                />
+                <img
+                  src={selectedProperty.archivos[2]}
+                  alt="propiedad"
+                  className={classes.midImg}
+                />
+              </Grid>
+            ) : (
+              <Grid style={{ objectFit: "contain" }}>
+                <img
+                  src={selectedProperty.archivos[1]}
+                  alt="propiedad"
+                  className={classes.mainImg}
+                />
+              </Grid>
             )}
           </Box>
-          <Grid className={classes.nameContainer}>
-            <Typography className={classes.name}>
-              {selectedProperty.nombre}
-            </Typography>
+          <Grid style={{ paddingLeft: 100, paddingRight: 100 }}>
+            <Grid className={classes.nameContainer}>
+              <Typography className={classes.name}>
+                {selectedProperty.nombre}
+              </Typography>
 
-            <Box className={classes.chipContainer}>
-              <Chip
-                icon={<LocationOnIcon />}
-                label={removeCamelCase(selectedProperty.zona)}
-              />
+              <Box className={classes.chipContainer}>
+                <Chip
+                  icon={<LocationOnIcon />}
+                  label={removeCamelCase(selectedProperty.zona)}
+                />
 
-              <Chip
-                icon={<LocationCityIcon />}
-                label={removeCamelCase(selectedProperty.tipoDePropiedad)}
-              />
-              <Chip
-                className={classes.operationTypeChip}
-                label={removeCamelCase(
-                  selectedProperty.tipoDeOperacion.toUpperCase()
-                )}
-              />
+                <Chip
+                  icon={<LocationCityIcon />}
+                  label={removeCamelCase(selectedProperty.tipoDePropiedad)}
+                />
+                <Chip
+                  className={classes.operationTypeChip}
+                  label={removeCamelCase(
+                    selectedProperty.tipoDeOperacion.toUpperCase()
+                  )}
+                />
+              </Box>
+            </Grid>
+            {selectedProperty.publicadoEn && (
+              <Typography className={classes.published}>
+                Publicado {dayjs(selectedProperty.publicadoEn).fromNow()}
+              </Typography>
+            )}
+            <Grid className={classes.descriptionBox}>
+              <Typography className={classes.descriptionLabel}>
+                Descripcion
+              </Typography>
+
+              <Typography>{selectedProperty.descripcion}</Typography>
+            </Grid>
+
+            <div className={classes.root}>
+              <Accordion
+                expanded={expanded.generales}
+                onChange={() => handleChange("generales")}
+              >
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel3bh-content"
+                  id="panel3bh-header"
+                >
+                  <Typography className={classes.heading}>Generales</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <List
+                    component="nav"
+                    aria-labelledby="nested-list-subheader"
+                    className={classes.root}
+                  >
+                    {gralData.generales.map((property) => (
+                      <ListItem button className={classes.listItem}>
+                        <Typography>
+                          <ListItemIcon>{property.icon}</ListItemIcon>
+                          {property.label}
+                        </Typography>
+                        <Typography>{property.value}</Typography>
+                      </ListItem>
+                    ))}
+                  </List>
+                </AccordionDetails>
+              </Accordion>
+              <Accordion
+                expanded={expanded.detalles}
+                onChange={() => handleChange("detalles")}
+              >
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel2bh-content"
+                  id="panel2bh-header"
+                >
+                  <Typography className={classes.heading}>Detalles</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <List
+                    component="nav"
+                    aria-labelledby="nested-list-subheader"
+                    className={classes.root}
+                  >
+                    {gralData.detalles.map((property, i) => (
+                      <ListItem button className={classes.listItem}>
+                        <Typography>
+                          <ListItemIcon>{property.icon}</ListItemIcon>
+                          {property.label}
+                        </Typography>
+                        <Typography>{property.value}</Typography>
+                      </ListItem>
+                    ))}
+                  </List>
+                </AccordionDetails>
+              </Accordion>
+
+              <Accordion
+                expanded={expanded.servicios}
+                onChange={() => handleChange("servicios")}
+              >
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel4bh-content"
+                  id="panel4bh-header"
+                >
+                  <Typography className={classes.heading}>
+                    Servicios y requisitos
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Box
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <Box
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <Typography>Requisitos</Typography>
+
+                      {selectedProperty.requisitos.map((item) => (
+                        <Typography>
+                          <BusinessCenterIcon />
+                          {item}
+                        </Typography>
+                      ))}
+                    </Box>
+                    <Box
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <Typography>Servicios</Typography>
+
+                      {selectedProperty.servicios.map((item) => (
+                        <Typography>
+                          <CheckCircleOutlineIcon />
+                          {item}
+                        </Typography>
+                      ))}
+                    </Box>
+                  </Box>
+                </AccordionDetails>
+              </Accordion>
+            </div>
+            <Box
+              style={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <Carousel
+                width="70%"
+                className={classes.carrousel}
+                dynamicHeight={false}
+                infiniteLoop
+                autoPlay
+                stopOnHover
+                useKeyboardArrows
+                emulateTouch
+                children
+              >
+                {selectedProperty.archivos.map((imageSource) => {
+                  const body = (
+                    <div>
+                      <img src={imageSource} alt="propiedad" />
+                    </div>
+                  );
+
+                  return body;
+                })}
+              </Carousel>
+            </Box>
+            <Box>
+              <Typography>Otras propiedades que podrian interesarte</Typography>
+              <Box className={classes.sameZoneProperty}>
+                {properties
+                  .filter((item) => item.zona === selectedProperty.zona)
+                  .map((sameZoneProperty) => {
+                    return <PropertuCard property={sameZoneProperty} />;
+                  })}
+              </Box>
             </Box>
           </Grid>
-          {selectedProperty.publicadoEn && (
-            <Typography className={classes.published}>
-              Publicado {dayjs(selectedProperty.publicadoEn).fromNow()}
-            </Typography>
-          )}
-          <Grid className={classes.descriptionBox}>
-            <Typography className={classes.descriptionLabel}>
-              Descripcion
-            </Typography>
-
-            <Typography>{selectedProperty.descripcion}</Typography>
-          </Grid>
-
-          <div className={classes.root}>
-            <Accordion
-              expanded={expanded.generales}
-              onChange={() => handleChange("generales")}
-            >
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel3bh-content"
-                id="panel3bh-header"
-              >
-                <Typography className={classes.heading}>Generales</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <List
-                  component="nav"
-                  aria-labelledby="nested-list-subheader"
-                  className={classes.root}
-                >
-                  {gralData.generales.map((property) => (
-                    <ListItem button className={classes.listItem}>
-                      <Typography>
-                        <ListItemIcon>{property.icon}</ListItemIcon>
-                        {property.label}
-                      </Typography>
-                      <Typography>{property.value}</Typography>
-                    </ListItem>
-                  ))}
-                </List>
-              </AccordionDetails>
-            </Accordion>
-            <Accordion
-              expanded={expanded.detalles}
-              onChange={() => handleChange("detalles")}
-            >
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel2bh-content"
-                id="panel2bh-header"
-              >
-                <Typography className={classes.heading}>Detalles</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <List
-                  component="nav"
-                  aria-labelledby="nested-list-subheader"
-                  className={classes.root}
-                >
-                  {gralData.detalles.map((property, i) => (
-                    <ListItem button className={classes.listItem}>
-                      <Typography>
-                        <ListItemIcon>{property.icon}</ListItemIcon>
-                        {property.label}
-                      </Typography>
-                      <Typography>{property.value}</Typography>
-                    </ListItem>
-                  ))}
-                </List>
-              </AccordionDetails>
-            </Accordion>
-
-            <Accordion
-              expanded={expanded.servicios}
-              onChange={() => handleChange("servicios")}
-            >
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel4bh-content"
-                id="panel4bh-header"
-              >
-                <Typography className={classes.heading}>
-                  Servicios y requisitos
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Box
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <Box
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                    }}
-                  >
-                    <Typography>Requisitos</Typography>
-
-                    {selectedProperty.requisitos.map((item) => (
-                      <Typography>
-                        <BusinessCenterIcon />
-                        {item}
-                      </Typography>
-                    ))}
-                  </Box>
-                  <Box
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                    }}
-                  >
-                    <Typography>Servicios</Typography>
-
-                    {selectedProperty.servicios.map((item) => (
-                      <Typography>
-                        <CheckCircleOutlineIcon />
-                        {item}
-                      </Typography>
-                    ))}
-                  </Box>
-                </Box>
-              </AccordionDetails>
-            </Accordion>
-          </div>
-          <Box
-            style={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <Carousel
-              width="70%"
-              className={classes.carrousel}
-              dynamicHeight={false}
-              infiniteLoop
-              autoPlay
-              stopOnHover
-              useKeyboardArrows
-              emulateTouch
-              children
-            >
-              {selectedProperty.archivos.map((imageSource) => {
-                const body = (
-                  <div>
-                    <img src={imageSource} alt="propiedad" />
-                  </div>
-                );
-
-                return body;
-              })}
-            </Carousel>
-          </Box>
         </Grid>
       )}
     </Grid>
