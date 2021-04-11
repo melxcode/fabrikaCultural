@@ -30,6 +30,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
+import MapComponent from "../components/MapComponent";
 
 dayjs.extend(relativeTime);
 dayjs.locale("es");
@@ -345,6 +346,9 @@ const PropertySearcher = () => {
                   return body;
                 })}
               </Carousel>
+            </Box>
+            <Box>
+              <MapComponent />
             </Box>
             <Box>
               <Typography>Otras propiedades que podrian interesarte</Typography>
