@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useCallback, useEffect } from "react";
+import ImageViewer from "react-simple-image-viewer";
 import { useSelector } from "react-redux";
 import {
   Grid,
@@ -23,7 +24,7 @@ import es from "dayjs/locale/es";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import { propertyData } from "../data/selectedProperty";
-import { formatMoney, removeCamelCase } from "../utils/format";
+import { removeCamelCase } from "../utils/format";
 import LocationCityIcon from "@material-ui/icons/LocationCity";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -124,6 +125,18 @@ const PropertySearcher = () => {
   const [selectedProperty, setSelectedProperty] = useState();
   const [gralData, setGralData] = useState({});
   const properties = useSelector((state) => state.propertyReducer.properties);
+  const [currentImage, setCurrentImage] = useState(0);
+  const [isViewerOpen, setIsViewerOpen] = useState(false);
+
+  const openImageViewer = useCallback((index) => {
+    setCurrentImage(index);
+    setIsViewerOpen(true);
+  }, []);
+
+  const closeImageViewer = () => {
+    setCurrentImage(0);
+    setIsViewerOpen(false);
+  };
 
   const handleChange = (seccion) => {
     setExpanded({
@@ -348,14 +361,15 @@ const PropertySearcher = () => {
                 dynamicHeight={false}
                 infiniteLoop
                 autoPlay
+                showArrows={false}
                 stopOnHover
                 useKeyboardArrows
                 emulateTouch
                 children
               >
-                {selectedProperty.archivos.map((imageSource) => {
+                {selectedProperty.archivos.map((imageSource, index) => {
                   const body = (
-                    <div>
+                    <div onClick={() => openImageViewer(index)}>
                       <img src={imageSource} alt="propiedad" />
                     </div>
                   );
@@ -364,6 +378,7 @@ const PropertySearcher = () => {
                 })}
               </Carousel>
             </Box>
+            {/*  <ImageViewer images={selectedProperty.archivos} /> */}
             <Box>
               <MapComponent position={selectedProperty.posicion} />
             </Box>
@@ -383,6 +398,13 @@ const PropertySearcher = () => {
             </Box>
           </Grid>
         </Grid>
+      )}
+      {isViewerOpen && (
+        <ImageViewer
+          src={selectedProperty.archivos}
+          currentIndex={currentImage}
+          onClose={closeImageViewer}
+        />
       )}
     </Grid>
   );
