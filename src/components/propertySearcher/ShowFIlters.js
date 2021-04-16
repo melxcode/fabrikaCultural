@@ -15,7 +15,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ShowFilters = ({ filters, setFilters }) => {
+const ShowFilters = ({
+  filters,
+  setFilters,
+  setPrice,
+  setSelectedCurrency,
+  setSquareMeters,
+}) => {
   const classes = useStyles();
 
   const handleRemoveFilter = (item) => {
@@ -25,8 +31,14 @@ const ShowFilters = ({ filters, setFilters }) => {
         (filter) =>
           filter.name !== item.name &&
           filter.field !== "filterPriceFrom" &&
-          filter.field !== "filterPriceTo"
+          filter.field !== "filterPriceTo" &&
+          filter.field !== "filterCurrency"
       );
+      setPrice({
+        from: "",
+        to: "",
+      });
+      setSelectedCurrency("");
     } else if (item.field === "squareMeters") {
       nonRemoved = filters.filter(
         (filter) =>
@@ -34,6 +46,10 @@ const ShowFilters = ({ filters, setFilters }) => {
           filter.field !== "filterSquareMetersFrom" &&
           filter.field !== "filterSquareMetersTo"
       );
+      setSquareMeters({
+        from: "",
+        to: "",
+      });
     } else {
       nonRemoved = filters.filter((filter) => filter.name !== item.name);
     }

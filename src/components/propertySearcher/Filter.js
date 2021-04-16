@@ -42,20 +42,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Filter = ({ filters, setFilters }) => {
+const Filter = ({
+  filters,
+  setFilters,
+  selectedCurrency,
+  price,
+  setPrice,
+  setSelectedCurrency,
+  squareMeters,
+  setSquareMeters,
+}) => {
   const classes = useStyles();
   const filter = createFilterOptions();
 
-  const [selectedCurrency, setSelectedCurrency] = useState("");
   const [currentTab, setCurrentTab] = useState("todo");
-  const [price, setPrice] = useState({
-    from: "",
-    to: "",
-  });
-  const [squareMeters, setSquareMeters] = useState({
-    from: "",
-    to: "",
-  });
+
   const tabs = [
     { value: "todo", label: "Todo" },
     { value: "venta", label: "Venta" },
@@ -332,6 +333,7 @@ const Filter = ({ filters, setFilters }) => {
             type="number"
             className={classes.priceFilter}
             fullWidth
+            value={price.from}
             placeholder="Valor Desde"
             onChange={(e) => {
               setPrice({
@@ -346,6 +348,7 @@ const Filter = ({ filters, setFilters }) => {
             label="Valor Hasta"
             className={classes.priceFilter}
             type="number"
+            value={price.to}
             fullWidth
             placeholder="Valor Hasta"
             onChange={(e) => {
@@ -393,6 +396,7 @@ const Filter = ({ filters, setFilters }) => {
             fullWidth
             className={classes.priceFilter}
             placeholder="Metros Desde"
+            value={squareMeters.from}
             onChange={(e) => {
               setSquareMeters({
                 ...squareMeters,
@@ -408,6 +412,7 @@ const Filter = ({ filters, setFilters }) => {
             fullWidth
             className={classes.priceFilter}
             placeholder="Metros Hasta"
+            value={squareMeters.to}
             onChange={(e) => {
               setSquareMeters({
                 ...squareMeters,

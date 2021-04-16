@@ -33,6 +33,16 @@ const PropertySearcher = () => {
   const [landingPageData, setLandingPageData] = useState({});
   const [filters, setFilters] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [selectedCurrency, setSelectedCurrency] = useState("");
+
+  const [price, setPrice] = useState({
+    from: "",
+    to: "",
+  });
+  const [squareMeters, setSquareMeters] = useState({
+    from: "",
+    to: "",
+  });
   useEffect(() => {
     setLandingPageData(JsonData);
   }, []);
@@ -42,11 +52,28 @@ const PropertySearcher = () => {
       <Navigation landingPageData={landingPageData} />
       <Box className={classes.showFilters}>
         {filters.length > 0 && (
-          <ShowFilters filters={filters} setFilters={setFilters} />
+          <ShowFilters
+            filters={filters}
+            setFilters={setFilters}
+            setSelectedCurrency={setSelectedCurrency}
+            price={price}
+            setPrice={setPrice}
+            squareMeters={squareMeters}
+            setSquareMeters={setSquareMeters}
+          />
         )}
       </Box>
       <Grid className={classes.main}>
-        <Filters filters={filters} setFilters={setFilters} />
+        <Filters
+          filters={filters}
+          setFilters={setFilters}
+          selectedCurrency={selectedCurrency}
+          setSelectedCurrency={setSelectedCurrency}
+          price={price}
+          setPrice={setPrice}
+          squareMeters={squareMeters}
+          setSquareMeters={setSquareMeters}
+        />
         <Box className={classes.list}>
           {loading ? (
             <CircularProgress />
