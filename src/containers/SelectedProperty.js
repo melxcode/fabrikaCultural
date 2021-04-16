@@ -9,6 +9,7 @@ import {
   AccordionDetails,
   AccordionSummary,
   Chip,
+  Divider,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -94,6 +95,7 @@ const useStyles = makeStyles((theme) => ({
   },
   descriptionBox: {
     paddingLeft: "30px",
+    marginBottom: "20px",
   },
   descriptionLabel: {
     fontSize: "20px",
@@ -104,6 +106,11 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   sameZoneProperty: { display: "flex" },
+  divider: {
+    height: "1px",
+    width: "118%",
+    marginLeft: "-9%",
+  },
 }));
 
 const PropertySearcher = () => {
@@ -137,7 +144,7 @@ const PropertySearcher = () => {
         <CircularProgress />
       ) : (
         <Grid>
-          <Header />
+          {/*  <Header /> */}
           <Box className={classes.imgContainer}>
             <img
               src={selectedProperty.fotoPrincipal}
@@ -168,7 +175,12 @@ const PropertySearcher = () => {
               </Grid>
             )}
           </Box>
-          <Grid style={{ paddingLeft: 100, paddingRight: 100 }}>
+          <Grid
+            style={{
+              paddingLeft: 100,
+              paddingRight: 100,
+            }}
+          >
             <Grid className={classes.nameContainer}>
               <Typography className={classes.name}>
                 {selectedProperty.nombre}
@@ -192,6 +204,7 @@ const PropertySearcher = () => {
                 />
               </Box>
             </Grid>
+            <Divider className={classes.divider} />
             {selectedProperty.publicadoEn && (
               <Typography className={classes.published}>
                 Publicado {dayjs(selectedProperty.publicadoEn).fromNow()}
@@ -282,7 +295,8 @@ const PropertySearcher = () => {
                   <Box
                     style={{
                       display: "flex",
-                      justifyContent: "space-between",
+                      justifyContent: "space-evenly",
+                      width: "100%",
                     }}
                   >
                     <Box
@@ -310,7 +324,9 @@ const PropertySearcher = () => {
 
                       {selectedProperty.servicios.map((item) => (
                         <Typography>
-                          <CheckCircleOutlineIcon />
+                          <CheckCircleOutlineIcon
+                            style={{ color: "#237CC9" }}
+                          />
                           {item}
                         </Typography>
                       ))}
@@ -323,6 +339,7 @@ const PropertySearcher = () => {
               style={{
                 display: "flex",
                 justifyContent: "center",
+                marginTop: "50px",
               }}
             >
               <Carousel
@@ -348,15 +365,19 @@ const PropertySearcher = () => {
               </Carousel>
             </Box>
             <Box>
-              <MapComponent />
+              <MapComponent position={selectedProperty.posicion} />
             </Box>
-            <Box>
-              <Typography>Otras propiedades que podrian interesarte</Typography>
+
+            <Box style={{ marginTop: "50px" }}>
+              <Typography className={classes.descriptionLabel}>
+                {" "}
+                Otras propiedades que podrian interesarte
+              </Typography>
               <Box className={classes.sameZoneProperty}>
                 {properties
                   .filter((item) => item.zona === selectedProperty.zona)
                   .map((sameZoneProperty) => {
-                    return <PropertuCard property={sameZoneProperty} />;
+                    return <PropertuCard property={sameZoneProperty} isSmall />;
                   })}
               </Box>
             </Box>

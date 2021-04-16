@@ -30,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
     margin: "10px",
   },
   media: {
-    height: "250px",
     display: "flex",
     justifyContent: "center",
     cursor: "pointer",
@@ -88,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PropertyCard = ({ property }) => {
+const PropertyCard = ({ property, isSmall }) => {
   const classes = useStyles();
   const [openModal, setOpenModal] = useState(false);
   const history = useHistory();
@@ -103,6 +102,7 @@ const PropertyCard = ({ property }) => {
         style={{
           backgroundImage: `url(${property.fotoPrincipal})`,
           backgroundSize: "100% 100%",
+          height: isSmall ? "0px" : "250px",
         }}
         image={property.fotoPrincipal}
         alt="Foto principal"
