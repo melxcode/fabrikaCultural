@@ -1,144 +1,120 @@
-import { useState } from 'react'
-import emailjs from 'emailjs-com'
+import React from "react";
+import { Box } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import MapComponent from "../MapComponent";
 
-const initialState = {
-  name: '',
-  email: '',
-  message: '',
-}
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    justifyContent: "space-between",
+    background: "black",
+    height: "215px",
+  },
+  map: {
+    width: "80%",
+    padding: "10px",
+  },
+  title: {
+    marginTop: "30px",
+    color: "white",
+  },
+  iconBox: {
+    marginTop: "30px",
+    display: "flex",
+  },
+  icon: {
+    color: "white",
+  },
+  detail: {
+    color: "white",
+  },
+  data: {
+    marginTop: "30px",
+    padding: "10px",
+  },
+}));
+
 export const Contact = (props) => {
-  const [{ name, email, message }, setState] = useState(initialState)
-
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setState((prevState) => ({ ...prevState, [name]: value }))
-  }
-  const clearState = () => setState({ ...initialState })
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(name, email, message)
-    emailjs
-      .sendForm(
-        'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target, 'YOUR_USER_ID'
-      )
-      .then(
-        (result) => {
-          console.log(result.text)
-          clearState()
-        },
-        (error) => {
-          console.log(error.text)
-        }
-      )
-  }
+  const classes = useStyles();
   return (
     <div>
-      <div id='contact'>
-        <div className='container'>
-          <div className='col-md-8'>
-            <div className='row'>
-              <div className='section-title'>
-                <h2>Get In Touch</h2>
+      <div id="contact">
+        <div className="container">
+          <div className="col-md-8">
+            <div className="row">
+              <div className="section-title">
+                <h2>Nuestra Ubicacion</h2>
                 <p>
-                  Please fill out the form below to send us an email and we will
-                  get back to you as soon as possible.
+                  Encontranos de Lunes a Viernes de 9:00 a 12:30 y de 17:00 a
+                  20:00
                 </p>
               </div>
-              <form name='sentMessage' validate onSubmit={handleSubmit}>
-                <div className='row'>
-                  <div className='col-md-6'>
-                    <div className='form-group'>
-                      <input
-                        type='text'
-                        id='name'
-                        name='name'
-                        className='form-control'
-                        placeholder='Name'
-                        required
-                        onChange={handleChange}
-                      />
-                      <p className='help-block text-danger'></p>
-                    </div>
-                  </div>
-                  <div className='col-md-6'>
-                    <div className='form-group'>
-                      <input
-                        type='email'
-                        id='email'
-                        name='email'
-                        className='form-control'
-                        placeholder='Email'
-                        required
-                        onChange={handleChange}
-                      />
-                      <p className='help-block text-danger'></p>
-                    </div>
-                  </div>
-                </div>
-                <div className='form-group'>
-                  <textarea
-                    name='message'
-                    id='message'
-                    className='form-control'
-                    rows='4'
-                    placeholder='Message'
-                    required
-                    onChange={handleChange}
-                  ></textarea>
-                  <p className='help-block text-danger'></p>
-                </div>
-                <div id='success'></div>
-                <button type='submit' className='btn btn-custom btn-lg'>
-                  Send Message
-                </button>
-              </form>
+              <Box className={classes.map}>
+                <MapComponent
+                  position={[-32.334255, -65.013435]}
+                  height="30%"
+                />
+              </Box>
             </div>
           </div>
-          <div className='col-md-3 col-md-offset-1 contact-info'>
-            <div className='contact-item'>
+          <div className="col-md-3 col-md-offset-1 contact-info">
+            <div className="contact-item">
               <h3>Contact Info</h3>
               <p>
                 <span>
-                  <i className='fa fa-map-marker'></i> Address
+                  <i className="fa fa-map-marker"></i> Direccion
                 </span>
-                {props.data ? props.data.address : 'loading'}
+                {props.data ? props.data.address : "loading"}
               </p>
             </div>
-            <div className='contact-item'>
+            <div className="contact-item">
               <p>
                 <span>
-                  <i className='fa fa-phone'></i> Phone
-                </span>{' '}
-                {props.data ? props.data.phone : 'loading'}
+                  <i className="fa fa-phone"></i> Telefono
+                </span>{" "}
+                {props.data ? props.data.phone : "loading"}
               </p>
             </div>
-            <div className='contact-item'>
+            <div className="contact-item">
               <p>
                 <span>
-                  <i className='fa fa-envelope-o'></i> Email
-                </span>{' '}
-                {props.data ? props.data.email : 'loading'}
+                  <i className="fa fa-phone"></i> WhatsApp
+                </span>{" "}
+                2664 035075 / 2657 630902
+              </p>
+            </div>
+            <div className="contact-item">
+              <p>
+                <span>
+                  <i className="fa fa-envelope-o"></i> Email
+                </span>{" "}
+                {props.data ? props.data.email : "loading"}
               </p>
             </div>
           </div>
-          <div className='col-md-12'>
-            <div className='row'>
-              <div className='social'>
+          <div className="col-md-12">
+            <div className="row">
+              <div className="social">
                 <ul>
-                  <li>
-                    <a href={props.data ? props.data.facebook : '/'}>
-                      <i className='fa fa-facebook'></i>
+                  <li
+                    onClick={() => {
+                      window.open(
+                        "https://www.facebook.com/CYM-Propiedades-114351933306683"
+                      );
+                    }}
+                  >
+                    <a>
+                      <i className="fa fa-facebook"></i>
                     </a>
                   </li>
-                  <li>
-                    <a href={props.data ? props.data.twitter : '/'}>
-                      <i className='fa fa-twitter'></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href={props.data ? props.data.youtube : '/'}>
-                      <i className='fa fa-youtube'></i>
+
+                  <li
+                    onClick={() => {
+                      window.open("https://wa.me/2664035075");
+                    }}
+                  >
+                    <a>
+                      <i className="fa fa-whatsapp"></i>
                     </a>
                   </li>
                 </ul>
@@ -147,16 +123,11 @@ export const Contact = (props) => {
           </div>
         </div>
       </div>
-      <div id='footer'>
-        <div className='container text-center'>
-          <p>
-            &copy; 2020 Issaaf Kattan React Land Page Template. Design by{' '}
-            <a href='http://www.templatewire.com' rel='nofollow'>
-              TemplateWire
-            </a>
-          </p>
+      <div id="footer">
+        <div className="container text-center">
+          <p>&copy; 2021 C&M Propiedades.</p>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

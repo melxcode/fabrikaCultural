@@ -6,6 +6,7 @@ import ShowFilters from "../components/propertySearcher/ShowFIlters";
 import JsonData from "../data/Textos.json";
 import { Grid, Box, CircularProgress } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { Contact as Footer } from "../components/home/contact";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -86,6 +87,7 @@ const PropertySearcher = () => {
           )}
         </Box>
       </Grid>
+      <Footer data={landingPageData.Contact} />
     </Grid>
   );
 };

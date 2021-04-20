@@ -7,7 +7,6 @@ import { About } from "../components/home/about";
 import { Services } from "../components/home/services";
 import { Gallery } from "../components/home/gallery";
 import { Testimonials } from "../components/home/testimonials";
-import { Team } from "../components/home/Team";
 import { Contact } from "../components/home/contact";
 import JsonData from "../data/Textos.json";
 
@@ -25,7 +24,6 @@ const Home = () => {
       <Services data={landingPageData.Services} />
       <Gallery />
       <Testimonials data={landingPageData.Testimonials} />
-      {/*  <Team data={landingPageData.Team} /> */}
       <Contact data={landingPageData.Contact} />
     </Grid>
   );

@@ -32,8 +32,9 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
-import Footer from "../components/Footer";
 import MapComponent from "../components/MapComponent";
+import { Contact as Footer } from "../components/home/contact";
+import JsonData from "../data/Textos.json";
 
 dayjs.extend(relativeTime);
 dayjs.locale("es");
@@ -173,6 +174,10 @@ const PropertySearcher = () => {
     setGralData(propertyData(property[0]));
   }, [properties, id]);
 
+  const [landingPageData, setLandingPageData] = useState({});
+  useEffect(() => {
+    setLandingPageData(JsonData);
+  }, []);
   return (
     <Grid className={classes.root}>
       {!selectedProperty ? (
@@ -430,8 +435,6 @@ const PropertySearcher = () => {
               </Box>
             </Box>
           </Grid>
-
-          <Footer />
         </Grid>
       )}
       {isViewerOpen && (
