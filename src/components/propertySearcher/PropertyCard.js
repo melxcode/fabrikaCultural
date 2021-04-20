@@ -14,20 +14,20 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import AddIcon from "@material-ui/icons/Add";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
-import {
-  formatMoney,
-  firstCharUpperCase,
-  removeCamelCase,
-} from "../../utils/format";
+import { formatMoney, removeCamelCase } from "../../utils/format";
 import InfoIcon from "./IconInfo";
 import ShareLinkModal from "./ShareLinkModal";
-import { useHistory } from "react-router";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: 310,
     borderRadius: "5%",
     margin: "10px",
+    "&:hover": {
+      transition: ".5s",
+      border: "2px solid ",
+      borderColor: "#5ca9fb",
+    },
   },
   media: {
     display: "flex",
@@ -37,15 +37,29 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: "56.25%",
 
     "&:hover": {
-      opacity: "0.5",
+      opacity: ".9",
+    },
+  },
+  mediaShadow: {
+    zIndex: -1,
+    width: "100%",
+    height: "250px",
+    marginBottom: "174px",
+    opacity: ".8",
+
+    "&:hover": {
+      opacity: ".5",
+      zIndex: 1,
+      transition: "1s",
+      background: "linear-gradient(to right, #5ca9fb 0%, #6372ff 100%);",
     },
   },
   mediaText: {
     marginTop: "-150px",
-    zIndex: -1,
     fontSize: "20px",
     fontWeight: "bolder",
     color: "white",
+    zIndex: -1,
     "&:hover": {
       zIndex: 2,
       opacity: "1",
@@ -90,7 +104,6 @@ const useStyles = makeStyles((theme) => ({
 const PropertyCard = ({ property, isSmall }) => {
   const classes = useStyles();
   const [openModal, setOpenModal] = useState(false);
-  const history = useHistory();
 
   return (
     <Card className={classes.root}>
@@ -107,7 +120,9 @@ const PropertyCard = ({ property, isSmall }) => {
         image={property.fotoPrincipal}
         alt="Foto principal"
       >
-        <Typography className={classes.mediaText}>Ver mas</Typography>
+        <Box className={classes.mediaShadow}>
+          <Typography className={classes.mediaText}>Ver mas</Typography>
+        </Box>
       </div>
       <CardContent>
         <Box className={classes.topData}>
@@ -125,7 +140,10 @@ const PropertyCard = ({ property, isSmall }) => {
             isTitle
             label={removeCamelCase(property.zona)}
             icon={
-              <LocationOnIcon fontSize="small" style={{ marginLeft: "-5px" }} />
+              <LocationOnIcon
+                fontSize="small"
+                style={{ marginLeft: "-5px", color: "#5CA9FB" }}
+              />
             }
           />
 
@@ -164,16 +182,13 @@ const PropertyCard = ({ property, isSmall }) => {
         </Box>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
         <IconButton
           onClick={() => {
             setOpenModal(true);
           }}
           aria-label="share"
         >
-          <ShareIcon />
+          <ShareIcon style={{ color: "#5CA9FB" }} />
         </IconButton>
         <Button
           aria-label="info"
@@ -181,7 +196,7 @@ const PropertyCard = ({ property, isSmall }) => {
             window.open(`/propiedades/${property.id}`);
           }}
         >
-          <AddIcon />
+          <AddIcon style={{ color: "#5CA9FB" }} />
           INFO
         </Button>
       </CardActions>

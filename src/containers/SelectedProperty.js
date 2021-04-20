@@ -174,10 +174,6 @@ const PropertySearcher = () => {
     setGralData(propertyData(property[0]));
   }, [properties, id]);
 
-  const [landingPageData, setLandingPageData] = useState({});
-  useEffect(() => {
-    setLandingPageData(JsonData);
-  }, []);
   return (
     <Grid className={classes.root}>
       {!selectedProperty ? (
@@ -251,7 +247,6 @@ const PropertySearcher = () => {
                 />
               </Box>
             </Grid>
-            <Divider className={classes.divider} />
             {selectedProperty.publicadoEn && (
               <Typography className={classes.published}>
                 Publicado {dayjs(selectedProperty.publicadoEn).fromNow()}
@@ -440,7 +435,7 @@ const PropertySearcher = () => {
       {isViewerOpen && (
         <ImageViewer
           src={selectedProperty.archivos}
-          backgroundStyle={{ zIndex: 444 }}
+          backgroundStyle={{ zIndex: 9999 }}
           currentIndex={currentImage}
           onClose={closeImageViewer}
         />
