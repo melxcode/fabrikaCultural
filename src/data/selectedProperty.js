@@ -14,45 +14,45 @@ export const propertyData = (selectedProperty) => {
       {
         label: "Tipo de propiedad",
         value: `${removeCamelCase(selectedProperty.tipoDePropiedad)}`,
-        icon: <HomeWorkIcon />,
+        icon: <HomeWorkIcon style={{ color: "#5CA9FB" }} />,
       },
       {
         label: "Valor",
         value: `${selectedProperty.moneda === "dolares" ? "USD " : "$ "}
         ${formatMoney(selectedProperty.precio)}`,
-        icon: <AttachMoneyIcon />,
+        icon: <AttachMoneyIcon style={{ color: "#5CA9FB" }} />,
       },
       {
         label: "Disponible para alquiler Turistico",
         value: `${selectedProperty.alquilerTuristico ? "Si" : "No"}`,
-        icon: <StarBorder />,
+        icon: <StarBorder style={{ color: "#5CA9FB" }} />,
       },
       {
         label: "Direccion",
         value: removeCamelCase(selectedProperty.direccion),
-        icon: <ContactMailIcon />,
+        icon: <ContactMailIcon style={{ color: "#5CA9FB" }} />,
       },
     ],
     detalles: [
       {
         label: "Metros",
         value: `${selectedProperty.metros} m²`,
-        icon: <MemoryIcon />,
+        icon: <MemoryIcon style={{ color: "#5CA9FB" }} />,
       },
       {
         label: "Metros Cubiertos",
         value: `${selectedProperty.metrosCubiertos} m²`,
-        icon: <StorefrontIcon />,
+        icon: <StorefrontIcon style={{ color: "#5CA9FB" }} />,
       },
       {
         label: "Ambientes",
         value: selectedProperty.ambientes,
-        icon: <MeetingRoomIcon />,
+        icon: <MeetingRoomIcon style={{ color: "#5CA9FB" }} />,
       },
       {
         label: "Sanitarios",
         value: selectedProperty.sanitarios,
-        icon: <BathtubIcon />,
+        icon: <BathtubIcon style={{ color: "#5CA9FB" }} />,
       },
     ],
   };

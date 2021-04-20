@@ -4,13 +4,13 @@ import "leaflet/dist/leaflet.css";
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import { Icon } from "leaflet";
 
-const SimpleMap = ({ position }) => {
+const SimpleMap = ({ position, height }) => {
   return (
     <MapContainer
       center={position}
-      zoom={13}
+      zoom={15}
       scrollWheelZoom={true}
-      style={{ width: "100%", height: "40%" }}
+      style={{ width: "100%", height: height }}
     >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -26,9 +26,7 @@ const SimpleMap = ({ position }) => {
           })
         }
       >
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
+        <Popup>Ubicacion aproximada</Popup>
       </Marker>
     </MapContainer>
   );

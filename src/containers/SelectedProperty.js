@@ -32,6 +32,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
+import Footer from "../components/Footer";
 import MapComponent from "../components/MapComponent";
 
 dayjs.extend(relativeTime);
@@ -39,6 +40,10 @@ dayjs.locale("es");
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    width: "100%",
+    background: "black",
+  },
+  list: {
     width: "100%",
   },
   heading: {
@@ -60,6 +65,17 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     borderBottom: "1px solid #bfbfbf",
+    background: "white",
+    "&:hover": {
+      background: "#5CA9FB",
+      color: "white",
+    },
+  },
+  icon: {
+    "&:hover": {
+      background: "white",
+      color: "white",
+    },
   },
   mainImg: {
     width: "130%",
@@ -70,12 +86,13 @@ const useStyles = makeStyles((theme) => ({
     height: "60%",
   },
   operationTypeChip: {
-    background: "#3B4CA9",
+    background: "#5CA9FB",
     color: "white",
   },
   name: {
     fontSize: "25px",
     fontWeight: "bold",
+    color: "white",
   },
   nameContainer: {
     display: "flex",
@@ -93,6 +110,7 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: "30px",
     marginTop: "-20px",
     marginBottom: "20px",
+    color: "white",
   },
   descriptionBox: {
     paddingLeft: "30px",
@@ -101,6 +119,7 @@ const useStyles = makeStyles((theme) => ({
   descriptionLabel: {
     fontSize: "20px",
     fontWeight: "bold",
+    color: "white",
   },
   midImg: {
     height: "50%",
@@ -111,6 +130,9 @@ const useStyles = makeStyles((theme) => ({
     height: "1px",
     width: "118%",
     marginLeft: "-9%",
+  },
+  white: {
+    color: "white",
   },
 }));
 
@@ -201,12 +223,19 @@ const PropertySearcher = () => {
 
               <Box className={classes.chipContainer}>
                 <Chip
-                  icon={<LocationOnIcon />}
+                  icon={<LocationOnIcon style={{ color: "#5CA9FB" }} />}
                   label={removeCamelCase(selectedProperty.zona)}
                 />
 
                 <Chip
-                  icon={<LocationCityIcon />}
+                  style={{ marginRight: "15px", marginLeft: "15px" }}
+                  icon={
+                    <LocationCityIcon
+                      style={{
+                        color: "#5CA9FB",
+                      }}
+                    />
+                  }
                   label={removeCamelCase(selectedProperty.tipoDePropiedad)}
                 />
                 <Chip
@@ -228,7 +257,9 @@ const PropertySearcher = () => {
                 Descripcion
               </Typography>
 
-              <Typography>{selectedProperty.descripcion}</Typography>
+              <Typography className={classes.white}>
+                {selectedProperty.descripcion}
+              </Typography>
             </Grid>
 
             <div className={classes.root}>
@@ -247,12 +278,14 @@ const PropertySearcher = () => {
                   <List
                     component="nav"
                     aria-labelledby="nested-list-subheader"
-                    className={classes.root}
+                    className={classes.list}
                   >
                     {gralData.generales.map((property) => (
                       <ListItem button className={classes.listItem}>
                         <Typography>
-                          <ListItemIcon>{property.icon}</ListItemIcon>
+                          <ListItemIcon className={classes.icon}>
+                            {property.icon}
+                          </ListItemIcon>
                           {property.label}
                         </Typography>
                         <Typography>{property.value}</Typography>
@@ -276,7 +309,7 @@ const PropertySearcher = () => {
                   <List
                     component="nav"
                     aria-labelledby="nested-list-subheader"
-                    className={classes.root}
+                    className={classes.list}
                   >
                     {gralData.detalles.map((property, i) => (
                       <ListItem button className={classes.listItem}>
@@ -358,7 +391,7 @@ const PropertySearcher = () => {
               <Carousel
                 width="70%"
                 className={classes.carrousel}
-                dynamicHeight={false}
+                dynamicHeight={true}
                 infiniteLoop
                 autoPlay
                 showArrows={false}
@@ -369,7 +402,7 @@ const PropertySearcher = () => {
               >
                 {selectedProperty.archivos.map((imageSource, index) => {
                   const body = (
-                    <div onClick={() => openImageViewer(index)}>
+                    <div onDoubleClick={() => openImageViewer(index)}>
                       <img src={imageSource} alt="propiedad" />
                     </div>
                   );
@@ -378,9 +411,9 @@ const PropertySearcher = () => {
                 })}
               </Carousel>
             </Box>
-            {/*  <ImageViewer images={selectedProperty.archivos} /> */}
-            <Box>
-              <MapComponent position={selectedProperty.posicion} />
+
+            <Box style={{ marginTop: "50px" }}>
+              <MapComponent position={selectedProperty.posicion} height="40%" />
             </Box>
 
             <Box style={{ marginTop: "50px" }}>
@@ -397,11 +430,14 @@ const PropertySearcher = () => {
               </Box>
             </Box>
           </Grid>
+
+          <Footer />
         </Grid>
       )}
       {isViewerOpen && (
         <ImageViewer
           src={selectedProperty.archivos}
+          backgroundStyle={{ zIndex: 444 }}
           currentIndex={currentImage}
           onClose={closeImageViewer}
         />
