@@ -46,7 +46,8 @@ const useStyles = makeStyles((theme) => ({
     height: "250px",
     marginBottom: "174px",
     opacity: ".8",
-
+    display: "flex",
+    justifyContent: "center",
     "&:hover": {
       opacity: ".5",
       zIndex: 1,
@@ -55,10 +56,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   mediaText: {
-    marginTop: "-150px",
-    fontSize: "20px",
-    fontWeight: "bolder",
+    marginTop: "75px",
+    fontSize: "50px",
     color: "white",
+    fontWeight: "bolder",
     zIndex: -1,
     "&:hover": {
       zIndex: 2,

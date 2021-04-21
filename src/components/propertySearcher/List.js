@@ -3,6 +3,7 @@ import PropertyCard from "./PropertyCard";
 import { useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
+import TablePagination from "@material-ui/core/TablePagination";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,6 +16,18 @@ const List = ({ filters, setFilters, setLoading }) => {
   const classes = useStyles();
   const properties = useSelector((state) => state.propertyReducer.properties);
   const [listProperties, setListProperties] = useState([]);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(9);
+  const totalRows = listProperties.length;
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
 
   useEffect(() => {
     const addFilters = (
@@ -126,15 +139,35 @@ const List = ({ filters, setFilters, setLoading }) => {
   }, [filters, properties]);
 
   return (
-    <Grid className={classes.root}>
-      {listProperties.length ? (
-        listProperties.map((property) => {
-          return <PropertyCard key={property.id} property={property} />;
-        })
-      ) : (
-        <h1>Cargando</h1>
+    <>
+      <Grid className={classes.root}>
+        {listProperties.length ? (
+          listProperties
+            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            .map((property) => {
+              return <PropertyCard key={property.id} property={property} />;
+            })
+        ) : (
+          <h1>No se han encontrado propiedades</h1>
+        )}
+      </Grid>
+      {listProperties.length > 0 && (
+        <TablePagination
+          style={{
+            background: "linear-gradient(to right, #5ca9fb 0%, #6372ff 100%)",
+            color: "white",
+          }}
+          rowsPerPageOptions={[6, 9, 18, 36]}
+          labelRowsPerPage="Casas por pagina"
+          component="div"
+          count={totalRows}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onChangePage={handleChangePage}
+          onChangeRowsPerPage={handleChangeRowsPerPage}
+        />
       )}
-    </Grid>
+    </>
   );
 };
 
