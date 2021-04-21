@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   root: {},
   filters: {
     width: "30%",
-    background: "white",
+    background: "red",
     paddingLeft: "30px",
   },
   main: {

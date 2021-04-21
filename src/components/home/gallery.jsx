@@ -15,11 +15,7 @@ export const Gallery = (props) => {
               <div className="portfolio-item">
                 <div className="hover-bg">
                   {" "}
-                  <a
-                    href="img/portfolio/01-large.jpg"
-                    title="Project Title"
-                    data-lightbox-gallery="gallery1"
-                  >
+                  <a title="Project Title" data-lightbox-gallery="gallery1">
                     <div className="hover-text">
                       <h4>Lorem Ipsum</h4>
                     </div>
@@ -36,11 +32,7 @@ export const Gallery = (props) => {
               <div className="portfolio-item">
                 <div className="hover-bg">
                   {" "}
-                  <a
-                    href="img/portfolio/02-large.jpg"
-                    title="Project Title"
-                    data-lightbox-gallery="gallery1"
-                  >
+                  <a title="Project Title" data-lightbox-gallery="gallery1">
                     <div className="hover-text">
                       <h4>Adipiscing Elit</h4>
                     </div>
@@ -57,11 +49,7 @@ export const Gallery = (props) => {
               <div className="portfolio-item">
                 <div className="hover-bg">
                   {" "}
-                  <a
-                    href="img/portfolio/03-large.jpg"
-                    title="Project Title"
-                    data-lightbox-gallery="gallery1"
-                  >
+                  <a title="Project Title" data-lightbox-gallery="gallery1">
                     <div className="hover-text">
                       <h4>Lorem Ipsum</h4>
                     </div>
@@ -78,11 +66,7 @@ export const Gallery = (props) => {
               <div className="portfolio-item">
                 <div className="hover-bg">
                   {" "}
-                  <a
-                    href="img/portfolio/04-large.jpg"
-                    title="Project Title"
-                    data-lightbox-gallery="gallery1"
-                  >
+                  <a title="Project Title" data-lightbox-gallery="gallery1">
                     <div className="hover-text">
                       <h4>Lorem Ipsum</h4>
                     </div>
@@ -99,11 +83,7 @@ export const Gallery = (props) => {
               <div className="portfolio-item">
                 <div className="hover-bg">
                   {" "}
-                  <a
-                    href="img/portfolio/05-large.jpg"
-                    title="Project Title"
-                    data-lightbox-gallery="gallery1"
-                  >
+                  <a title="Project Title" data-lightbox-gallery="gallery1">
                     <div className="hover-text">
                       <h4>Adipiscing Elit</h4>
                     </div>
@@ -120,11 +100,7 @@ export const Gallery = (props) => {
               <div className="portfolio-item">
                 <div className="hover-bg">
                   {" "}
-                  <a
-                    href="img/portfolio/06-large.jpg"
-                    title="Project Title"
-                    data-lightbox-gallery="gallery1"
-                  >
+                  <a title="Project Title" data-lightbox-gallery="gallery1">
                     <div className="hover-text">
                       <h4>Dolor Sit</h4>
                     </div>
@@ -141,11 +117,7 @@ export const Gallery = (props) => {
               <div className="portfolio-item">
                 <div className="hover-bg">
                   {" "}
-                  <a
-                    href="img/portfolio/07-large.jpg"
-                    title="Project Title"
-                    data-lightbox-gallery="gallery1"
-                  >
+                  <a title="Project Title" data-lightbox-gallery="gallery1">
                     <div className="hover-text">
                       <h4>Dolor Sit</h4>
                     </div>
@@ -162,11 +134,7 @@ export const Gallery = (props) => {
               <div className="portfolio-item">
                 <div className="hover-bg">
                   {" "}
-                  <a
-                    href="img/portfolio/08-large.jpg"
-                    title="Project Title"
-                    data-lightbox-gallery="gallery1"
-                  >
+                  <a title="Project Title" data-lightbox-gallery="gallery1">
                     <div className="hover-text">
                       <h4>Lorem Ipsum</h4>
                     </div>
@@ -183,11 +151,7 @@ export const Gallery = (props) => {
               <div className="portfolio-item">
                 <div className="hover-bg">
                   {" "}
-                  <a
-                    href="img/portfolio/09-large.jpg"
-                    title="Project Title"
-                    data-lightbox-gallery="gallery1"
-                  >
+                  <a title="Project Title" data-lightbox-gallery="gallery1">
                     <div className="hover-text">
                       <h4>Adipiscing Elit</h4>
                     </div>

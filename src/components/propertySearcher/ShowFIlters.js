@@ -4,11 +4,14 @@ import { Button, Chip, Grid, Typography } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   root: {
     color: "white",
+    marginBottom: "15px",
   },
   filters: {
     display: "flex",
     border: "1px solid white",
-    borderRadius: "10px",
+    borderRadius: "25px",
+    borderColor: "#5ca9fb",
+
     height: "35px",
   },
   topBar: {

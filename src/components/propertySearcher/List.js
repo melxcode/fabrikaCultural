@@ -17,7 +17,7 @@ const List = ({ filters, setFilters, setLoading }) => {
   const properties = useSelector((state) => state.propertyReducer.properties);
   const [listProperties, setListProperties] = useState([]);
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(9);
+  const [rowsPerPage, setRowsPerPage] = useState(6);
   const totalRows = listProperties.length;
 
   const handleChangeRowsPerPage = (event) => {
@@ -151,7 +151,7 @@ const List = ({ filters, setFilters, setLoading }) => {
           <h1>No se han encontrado propiedades</h1>
         )}
       </Grid>
-      {listProperties.length > 0 && (
+      {listProperties.length > rowsPerPage && (
         <TablePagination
           style={{
             background: "linear-gradient(to right, #5ca9fb 0%, #6372ff 100%)",

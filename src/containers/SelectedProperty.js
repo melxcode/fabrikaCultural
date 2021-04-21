@@ -150,7 +150,12 @@ const PropertySearcher = () => {
   const properties = useSelector((state) => state.propertyReducer.properties);
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
-
+  const [size, setSize] = useState(0);
+  let action;
+  window.onresize = function () {
+    clearTimeout(action);
+    action = setTimeout(setSize(window.innerWidth), 100);
+  };
   const openImageViewer = useCallback((index) => {
     setCurrentImage(index);
     setIsViewerOpen(true);
@@ -419,12 +424,18 @@ const PropertySearcher = () => {
             <Box style={{ marginTop: "50px" }}>
               <Typography className={classes.descriptionLabel}>
                 {" "}
-                Otras propiedades que podrian interesarte
+                {window.window.innerWidth < 500
+                  ? ""
+                  : "Otras propiedades que podrian interesarte"}
               </Typography>
               <Box className={classes.sameZoneProperty}>
                 {properties
                   .filter((item) => item.zona === selectedProperty.zona)
-                  .map((sameZoneProperty) => {
+                  .map((sameZoneProperty, index) => {
+                    const quantity = Math.floor(window.innerWidth / 250);
+                    if (index > quantity - 2) {
+                      return;
+                    }
                     return <PropertuCard property={sameZoneProperty} isSmall />;
                   })}
               </Box>
