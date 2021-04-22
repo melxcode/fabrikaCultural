@@ -10,12 +10,10 @@ import {
   AccordionDetails,
   AccordionSummary,
   Chip,
-  Divider,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-import Header from "../components/selectedProperty/Header";
 import PropertuCard from "../components/propertySearcher/PropertyCard";
 import { useParams } from "react-router";
 import dayjs from "dayjs";
@@ -33,8 +31,6 @@ import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import MapComponent from "../components/MapComponent";
-import { Contact as Footer } from "../components/home/contact";
-import JsonData from "../data/Textos.json";
 
 dayjs.extend(relativeTime);
 dayjs.locale("es");
@@ -430,7 +426,11 @@ const PropertySearcher = () => {
               </Typography>
               <Box className={classes.sameZoneProperty}>
                 {properties
-                  .filter((item) => item.zona === selectedProperty.zona)
+                  .filter(
+                    (item) =>
+                      item.zona === selectedProperty.zona &&
+                      item.id !== selectedProperty.id
+                  )
                   .map((sameZoneProperty, index) => {
                     const quantity = Math.floor(window.innerWidth / 250);
                     if (index > quantity - 2) {

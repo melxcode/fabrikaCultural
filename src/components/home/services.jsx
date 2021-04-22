@@ -4,10 +4,7 @@ export const Services = (props) => {
       <div className="container">
         <div className="section-title">
           <h2>Nuestros servicios</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit duis sed
-            dapibus leonec.
-          </p>
+          <p>En C & M Somos reconocidos por destacarnos en :</p>
         </div>
         <div className="row">
           {props.data

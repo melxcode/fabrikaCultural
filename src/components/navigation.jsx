@@ -54,10 +54,10 @@ export const Navigation = (props) => {
                 Testimonios
               </a>
             </li>
+
             <li>
               <a
-                href="#team"
-                className="page-scroll"
+                className="page-scroll  "
                 onClick={() => {
                   history.push("/propiedades");
                 }}

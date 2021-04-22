@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "10",
     background: "#FAFAFA",
     height: "40%",
+    width: "20%",
     color: "black",
   },
   tabs: {

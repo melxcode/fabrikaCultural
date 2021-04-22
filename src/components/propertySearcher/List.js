@@ -9,6 +9,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexWrap: "wrap",
+    flex: 1,
+    justifyContent: "center",
   },
 }));
 
@@ -151,11 +153,12 @@ const List = ({ filters, setFilters, setLoading }) => {
           <h1>No se han encontrado propiedades</h1>
         )}
       </Grid>
-      {listProperties.length > rowsPerPage && (
+      {listProperties.length > 0 && (
         <TablePagination
           style={{
             background: "linear-gradient(to right, #5ca9fb 0%, #6372ff 100%)",
             color: "white",
+            marginTop: "30px",
           }}
           rowsPerPageOptions={[6, 9, 18, 36]}
           labelRowsPerPage="Casas por pagina"

@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
   root: {},
   filters: {
     width: "30%",
-    background: "red",
     paddingLeft: "30px",
   },
   main: {
@@ -25,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
   list: {
     padding: "10px",
+    flex: 1,
   },
 }));
 

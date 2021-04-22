@@ -1,109 +1,88 @@
 {
   "Header": {
     "title": "C&M Inmobiliaria",
-    "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sed commodo nibh ante facilisis bibendum."
+    "paragraph": "Las mejores propiedades de Merlo."
   },
   "About": {
-    "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "paragraph": "Somos una Inmobiliaria Que esta buscando ayudarte a encontrar la casa que estas buscando",
     "Why": [
-      "Lorem ipsum dolor",
-      "Tempor incididunt",
-      "Lorem ipsum dolor",
-      "Incididunt ut labore"
+      "Basta Experiencia en la zona",
+      "100% Transparencia",
+      "Excelente Atencion",
+      "Amplio catalogo"
     ],
     "Why2": [
-      "Aliquip ex ea commodo",
-      "Lorem ipsum dolor",
-      "Exercitation ullamco",
-      "Lorem ipsum dolor"
+      "Martilleros publicos certificados",
+      "Disponibilidad para visitas",
+      "Te asesoramos en tu operacion",
+      "Proovedores de confianza"
     ]
   },
   "Services": [
     {
-      "icon": "fa fa-wordpress",
-      "name": "Lorem ipsum dolor",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+      "icon": "fa fa-credit-card",
+      "name": "Compra / Venta",
+      "text": "Somos una inmobiliaria con amplia experiencia cerrando operaciones inmuebles de todo tipo desde hace medio siglo."
     },
     {
-      "icon": "fa fa-cart-arrow-down",
-      "name": "Consectetur adipiscing",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+      "icon": "fa fa-home",
+      "name": "Alquiler Permanente",
+      "text": "Conectamos gran cantidad de propietarios con inquilinos, llevando mas que mediacion y contratos.. Confianza."
     },
     {
-      "icon": "fa fa-cloud-download",
-      "name": "Lorem ipsum dolor",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+      "icon": "fa fa-check-square-o",
+      "name": "Alquiler Turistico",
+      "text": "Te ayudamos a encontrar tu casa, cabaña para que solo te ocupes de disfrutar tus vacaciones en la hermosa Villa de Merlo."
     },
     {
-      "icon": "fa fa-language",
-      "name": "Consectetur adipiscing",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+      "icon": "fa fa-refresh",
+      "name": "Permuta",
+      "text": "Tenemos una amplia lista de propiedades y propietarios listos para permutar sus inmuebles."
     },
     {
-      "icon": "fa fa-plane",
-      "name": "Lorem ipsum dolor",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+      "icon": "fa fa-envelope-o",
+      "name": "Asistencia Online",
+      "text": "Disponemos de un correo de soporte al cliente y atencion Via Whatsapp para mitigar todas tus dudas."
     },
     {
-      "icon": "fa fa-pie-chart",
-      "name": "Consectetur adipiscing",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+      "icon": "fa fa-calendar",
+      "name": "Visitas",
+      "text": "Te acompañamos a recorrer la propiedad que te interesa para que puedas sentirla en persona."
     }
   ],
   "Testimonials": [
     {
       "img": "img/testimonials/01.jpg",
-      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-      "name": "John Doe"
+      "text": "\"Los contacte por  y me contestaron rapido, con buena onda y me encontraron casa de vacaciones.\"",
+      "name": "Juan Agreti"
     },
     {
       "img": "img/testimonials/02.jpg",
-      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-      "name": "Johnathan Doe"
+      "text": "\"Muy amables Cristian y Carlos me ayudaron a resolver a encontrar un alquiler permanente en merlo.\"",
+      "name": "Carla Minezzo"
     },
     {
       "img": "img/testimonials/03.jpg",
-      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-      "name": "John Doe"
+      "text": "\"Permute 2 lotes que tenia en cerro de oro gracias a ustedes ,la verdad se agradece la mediacion .\"",
+      "name": "Mariano Reviolo"
     },
     {
       "img": "img/testimonials/04.jpg",
-      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-      "name": "Johnathan Doe"
+      "text": "\"3er Verano Disfrutando de carpinteria gracias a los muchachos de C y M dandome una mano .\"",
+      "name": "Jorge broader"
     },
     {
       "img": "img/testimonials/05.jpg",
-      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-      "name": "John Doe"
+      "text": "\"Largo tiempo intentando vender mi casa, la publique en C y M y en unos meses la pude vender.\"",
+      "name": "Domingo Etcheverria"
     },
     {
       "img": "img/testimonials/06.jpg",
-      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-      "name": "Johnathan Doe"
+      "text": "\"Compre mi primera casa aca en merlo y la empresa me ayudo muchisimo a encontrar la perfecta .\"",
+      "name": "Martin Domingez"
     }
   ],
-  "Team": [
-    {
-      "img": "img/team/01.jpg",
-      "name": "John Doe",
-      "job": "Director"
-    },
-    {
-      "img": "img/team/02.jpg",
-      "name": "Mike Doe",
-      "job": "Senior Designer"
-    },
-    {
-      "img": "img/team/03.jpg",
-      "name": "Jane Doe",
-      "job": "Senior Designer"
-    },
-    {
-      "img": "img/team/04.jpg",
-      "name": "Karen Doe",
-      "job": "Project Manager"
-    }
-  ],
+
   "Contact": {
     "address": "Avenida Libertador 45, Barranca Colorada, Merlo, San Luis",
     "phone": "2664 035075 / 2657 630902",
@@ -114,24 +93,24 @@
   },
   "Features": [
     {
-      "icon": "fa fa-comments-o",
-      "title": "Lorem ipsum",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+      "icon": "fa fa-info",
+      "title": "Paso 1",
+      "text": "Clickea el boton 'Propiedades' para poder ver , filtrar y encontrar una propiedad en toda nuestra coleccion."
     },
     {
-      "icon": "fa fa-bullhorn",
-      "title": "Lorem ipsum",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+      "icon": "fa fa-eye",
+      "title": "Paso 2",
+      "text": "Clickea una propiedad para conocer todos sus datos y poder verla en detalle."
     },
     {
       "icon": "fa fa-group",
-      "title": "Lorem ipsum",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+      "title": "Paso 3",
+      "text": "Comunicate con nuestro equipo, tocando el boton de Whatsapp o clickea aca para ver nuestros datos."
     },
     {
-      "icon": "fa fa-magic",
-      "title": "Lorem ipsum",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+      "icon": "fa fa-comments-o",
+      "title": "Paso 4",
+      "text": "Nuestro equipo se comunicara con vos para darte acesoramiento para poder avanzar en la operacion."
     }
   ]
 }

@@ -22,7 +22,7 @@ const Home = () => {
       <Features data={landingPageData.Features} />
       <About data={landingPageData.About} />
       <Services data={landingPageData.Services} />
-      <Gallery />
+      {/*  <Gallery /> */}
       <Testimonials data={landingPageData.Testimonials} />
       <Contact data={landingPageData.Contact} />
     </Grid>

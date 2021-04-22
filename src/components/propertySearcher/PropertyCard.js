@@ -121,7 +121,17 @@ const PropertyCard = ({ property, isSmall }) => {
         image={property.fotoPrincipal}
         alt="Foto principal"
       >
-        <Box className={classes.mediaShadow}>
+        <Box
+          className={classes.mediaShadow}
+          style={
+            isSmall
+              ? {
+                  height: "0px",
+                  marginBottom: "157px",
+                }
+              : null
+          }
+        >
           <Typography className={classes.mediaText}>Ver mas</Typography>
         </Box>
       </div>
