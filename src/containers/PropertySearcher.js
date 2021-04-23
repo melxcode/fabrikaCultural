@@ -7,6 +7,7 @@ import JsonData from "../data/Textos.json";
 import { Grid, Box, CircularProgress } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Contact as Footer } from "../components/home/contact";
+import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -26,6 +27,23 @@ const useStyles = makeStyles((theme) => ({
     padding: "10px",
     marginLeft: "8%",
     flex: 1,
+  },
+  whatsapp: {
+    position: "fixed",
+    width: "60px",
+    height: "60px",
+    bottom: "40px",
+    right: "40px",
+    backgroundColor: "#25d366",
+    color: "#FFF",
+    borderRadius: "50px",
+    textAlign: "center",
+    fontSize: "30px",
+    boxShadow: "2px 2px 3px #999",
+    zIndex: "100",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
 }));
 
@@ -89,6 +107,14 @@ const PropertySearcher = () => {
         </Box>
       </Grid>
       <Footer data={landingPageData.Contact} />
+      <a
+        href="https://wa.me/5492664035075"
+        className={classes.whatsapp}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <WhatsAppIcon fontSize="large" />
+      </a>
     </Grid>
   );
 };
