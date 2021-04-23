@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
   list: {
     padding: "10px",
+    marginLeft: "8%",
     flex: 1,
   },
 }));

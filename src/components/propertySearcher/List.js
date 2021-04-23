@@ -10,7 +10,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexWrap: "wrap",
     flex: 1,
-    justifyContent: "center",
   },
 }));
 

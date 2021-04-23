@@ -10,6 +10,7 @@ import {
   AccordionDetails,
   AccordionSummary,
   Chip,
+  Button,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -20,7 +21,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import es from "dayjs/locale/es";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-
+import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import { propertyData } from "../data/selectedProperty";
 import { removeCamelCase } from "../utils/format";
 import LocationCityIcon from "@material-ui/icons/LocationCity";
@@ -130,6 +131,23 @@ const useStyles = makeStyles((theme) => ({
   },
   white: {
     color: "white",
+  },
+  whatsapp: {
+    position: "fixed",
+    width: "60px",
+    height: "60px",
+    bottom: "40px",
+    right: "40px",
+    backgroundColor: "#25d366",
+    color: "#FFF",
+    borderRadius: "50px",
+    textAlign: "center",
+    fontSize: "30px",
+    boxShadow: "2px 2px 3px #999",
+    zIndex: "100",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
 }));
 
@@ -441,6 +459,14 @@ const PropertySearcher = () => {
               </Box>
             </Box>
           </Grid>
+          <a
+            href="https://wa.me/5492664035075"
+            className={classes.whatsapp}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <WhatsAppIcon fontSize="large" />
+          </a>
         </Grid>
       )}
       {isViewerOpen && (

@@ -110,7 +110,7 @@ export const Contact = (props) => {
 
                   <li
                     onClick={() => {
-                      window.open("https://wa.me/2664035075");
+                      window.open("https://wa.me/5492664035075");
                     }}
                   >
                     <a>

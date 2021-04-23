@@ -57,7 +57,9 @@ const Footer = () => {
           </IconButton>
           <IconButton
             onClick={() => {
-              window.open("https://wa.me/2664035075");
+              window.open(
+                "https://api.whatsapp.com/send?phone=5491122578334&text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Varela%202."
+              );
             }}
           >
             <WhatsAppIcon className={classes.icon} />
