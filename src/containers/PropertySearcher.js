@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
   },
   main: {
     display: "flex",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+    },
   },
   showFilters: {
     marginTop: "100px",

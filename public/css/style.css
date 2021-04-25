@@ -465,7 +465,7 @@ header .intro-text {
 /* Contact Section */
 #contact {
   padding: 100px 0 60px 0;
-  background:black
+  background: black;
   color: rgba(255, 255, 255, 0.75);
 }
 #contact .section-title {

@@ -25,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
     height: "40%",
     width: "20%",
     color: "black",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+    },
   },
   tabs: {
     marginTop: theme.spacing(3),
