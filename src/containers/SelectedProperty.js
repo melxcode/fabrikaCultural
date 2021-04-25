@@ -10,7 +10,6 @@ import {
   AccordionDetails,
   AccordionSummary,
   Chip,
-  Button,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -32,6 +31,7 @@ import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import MapComponent from "../components/MapComponent";
+import { WHATSAPP_NUMBER } from "../data/datos";
 
 dayjs.extend(relativeTime);
 dayjs.locale("es");
@@ -431,6 +431,25 @@ const PropertySearcher = () => {
               </Carousel>
             </Box>
 
+            {selectedProperty.video && (
+              <Box
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <iframe
+                  width="560"
+                  height="315"
+                  src={selectedProperty.video}
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </Box>
+            )}
+
             <Box style={{ marginTop: "50px" }}>
               <MapComponent position={selectedProperty.posicion} height="40%" />
             </Box>
@@ -460,7 +479,7 @@ const PropertySearcher = () => {
             </Box>
           </Grid>
           <a
-            href="https://wa.me/5492664035075"
+            href={`https://wa.me/${WHATSAPP_NUMBER}`}
             className={classes.whatsapp}
             target="_blank"
             rel="noreferrer"

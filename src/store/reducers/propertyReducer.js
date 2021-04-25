@@ -248,7 +248,7 @@ const initialState = {
         "https://images.unsplash.com/photo-1489370321024-e0410ad08da4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
         "https://i.ibb.co/P92683j/Whats-App-Image-2021-04-11-at-15-45-21.jpg",
       ],
-      video: "",
+      video: "https://www.youtube.com/embed/H6SZuAcqeW8",
       fotoPrincipal:
         "https://i.ibb.co/P92683j/Whats-App-Image-2021-04-11-at-15-45-21.jpg",
       zona: "merlo",

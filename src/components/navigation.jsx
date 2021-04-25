@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 
 export const Navigation = (props) => {
   const history = useHistory();
+
   return (
     <nav id="menu" className="/* navbar navbar-default navbar-fixed-top */">
       <div className="container">
@@ -19,7 +20,16 @@ export const Navigation = (props) => {
             <span className="icon-bar"></span>{" "}
             <span className="icon-bar"></span>{" "}
           </button>
-          <a className="navbar-brand page-scroll" href="#page-top">
+          <a
+            className="navbar-brand page-scroll"
+            href="#page-top"
+            onClick={() => {
+              if (window.location.pathname === "/") {
+                return;
+              }
+              history.push("/");
+            }}
+          >
             C&M Inmobiliaria
           </a>{" "}
         </div>
@@ -30,27 +40,59 @@ export const Navigation = (props) => {
         >
           <ul className="nav navbar-nav navbar-right">
             <li>
-              <a href="#features" className="page-scroll">
+              <a
+                onClick={() => {
+                  if (window.location.pathname === "/") {
+                    return;
+                  }
+                  history.push("/");
+                }}
+                href={window.location.pathname === "/" ? "#features" : null}
+                className="page-scroll"
+              >
                 Paso a paso
               </a>
             </li>
             <li>
-              <a href="#about" className="page-scroll">
+              <a
+                onClick={() => {
+                  if (window.location.pathname === "/") {
+                    return;
+                  }
+                  history.push("/");
+                }}
+                href={window.location.pathname === "/" ? "#about" : null}
+                className="page-scroll"
+              >
                 Nosotros
               </a>
             </li>
             <li>
-              <a href="#services" className="page-scroll">
+              <a
+                onClick={() => {
+                  if (window.location.pathname === "/") {
+                    return;
+                  }
+                  history.push("/");
+                }}
+                href={window.location.pathname === "/" ? "#services" : null}
+                className="page-scroll"
+              >
                 Servicios
               </a>
             </li>
+
             <li>
-              <a href="#portfolio" className="page-scroll">
-                Galeria
-              </a>
-            </li>
-            <li>
-              <a href="#testimonials" className="page-scroll">
+              <a
+                onClick={() => {
+                  if (window.location.pathname === "/") {
+                    return;
+                  }
+                  history.push("/");
+                }}
+                href={window.location.pathname === "/" ? "#testimonials" : null}
+                className="page-scroll"
+              >
                 Testimonios
               </a>
             </li>
@@ -66,7 +108,16 @@ export const Navigation = (props) => {
               </a>
             </li>
             <li>
-              <a href="#contact" className="page-scroll">
+              <a
+                onClick={() => {
+                  if (window.location.pathname === "/") {
+                    return;
+                  }
+                  history.push("/");
+                }}
+                href={window.location.pathname === "/" ? "#contact" : null}
+                className="page-scroll"
+              >
                 Contacto
               </a>
             </li>

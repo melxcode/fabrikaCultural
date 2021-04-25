@@ -10,7 +10,6 @@ import {
   Button,
 } from "@material-ui/core";
 import { red } from "@material-ui/core/colors";
-import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import AddIcon from "@material-ui/icons/Add";
 import LocationOnIcon from "@material-ui/icons/LocationOn";

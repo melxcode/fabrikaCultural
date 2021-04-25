@@ -2,6 +2,7 @@ import React from "react";
 import { Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import MapComponent from "../MapComponent";
+import { WHATSAPP_NUMBER } from "../../data/datos";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -110,7 +111,7 @@ export const Contact = (props) => {
 
                   <li
                     onClick={() => {
-                      window.open("https://wa.me/5492664035075");
+                      window.open(`https://wa.me/${WHATSAPP_NUMBER}`);
                     }}
                   >
                     <a>

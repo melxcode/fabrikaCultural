@@ -8,6 +8,7 @@ import { Grid, Box, CircularProgress } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Contact as Footer } from "../components/home/contact";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
+import { WHATSAPP_NUMBER } from "../data/datos";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -108,7 +109,7 @@ const PropertySearcher = () => {
       </Grid>
       <Footer data={landingPageData.Contact} />
       <a
-        href="https://wa.me/5492664035075"
+        href={`https://wa.me/${WHATSAPP_NUMBER}`}
         className={classes.whatsapp}
         target="_blank"
         rel="noreferrer"
