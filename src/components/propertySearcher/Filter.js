@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "10",
     background: "#FAFAFA",
     height: "40%",
-    width: "20%",
+    width: "28%",
     color: "black",
     [theme.breakpoints.down("sm")]: {
       width: "100%",
