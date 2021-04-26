@@ -18,6 +18,7 @@ import PropertuCard from "../components/propertySearcher/PropertyCard";
 import { useParams } from "react-router";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+/*    eslint-disable-next-line */
 import es from "dayjs/locale/es";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
@@ -97,12 +98,19 @@ const useStyles = makeStyles((theme) => ({
     padding: 15,
     paddingLeft: 25,
     justifyContent: "space-between",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+    },
   },
   chipContainer: {
     paddingRight: 50,
     display: "flex",
     justifyContent: "space-between",
     width: "20%",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "10px",
+      marginBottom: "10px",
+    },
   },
   published: {
     paddingLeft: "30px",
@@ -137,14 +145,14 @@ const useStyles = makeStyles((theme) => ({
     width: "60px",
     height: "60px",
     bottom: "40px",
-    right: "40px",
+    right: "100px",
     backgroundColor: "#25d366",
     color: "#FFF",
     borderRadius: "50px",
     textAlign: "center",
     fontSize: "30px",
     boxShadow: "2px 2px 3px #999",
-    zIndex: "100",
+    zIndex: "1000000",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -164,7 +172,7 @@ const PropertySearcher = () => {
   const properties = useSelector((state) => state.propertyReducer.properties);
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
-  const [size, setSize] = useState(0);
+  const [size, setSize] = useState(window.innerWidth);
   let action;
   window.onresize = function () {
     clearTimeout(action);
@@ -231,12 +239,19 @@ const PropertySearcher = () => {
             )}
           </Box>
           <Grid
-            style={{
-              paddingLeft: 100,
-              paddingRight: 100,
-            }}
+            style={
+              size > 600
+                ? {
+                    paddingLeft: 100,
+                    paddingRight: 100,
+                  }
+                : null
+            }
           >
-            <Grid className={classes.nameContainer}>
+            <Grid
+              className={classes.nameContainer}
+              style={size < 600 ? { marginTop: "60px" } : null}
+            >
               <Typography className={classes.name}>
                 {selectedProperty.nombre}
               </Typography>
@@ -471,6 +486,7 @@ const PropertySearcher = () => {
                   .map((sameZoneProperty, index) => {
                     const quantity = Math.floor(window.innerWidth / 250);
                     if (index > quantity - 2) {
+                      /*    eslint-disable-next-line */
                       return;
                     }
                     return <PropertuCard property={sameZoneProperty} isSmall />;

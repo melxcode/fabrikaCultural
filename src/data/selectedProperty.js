@@ -23,7 +23,7 @@ export const propertyData = (selectedProperty) => {
         icon: <AttachMoneyIcon style={{ color: "#5CA9FB" }} />,
       },
       {
-        label: "Disponible para alquiler Turistico",
+        label: "Alquiler Turistico",
         value: `${selectedProperty.alquilerTuristico ? "Si" : "No"}`,
         icon: <StarBorder style={{ color: "#5CA9FB" }} />,
       },

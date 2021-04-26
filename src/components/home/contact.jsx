@@ -104,6 +104,7 @@ export const Contact = (props) => {
                       );
                     }}
                   >
+                    {/*    eslint-disable-next-line */}
                     <a>
                       <i className="fa fa-facebook"></i>
                     </a>
@@ -114,6 +115,7 @@ export const Contact = (props) => {
                       window.open(`https://wa.me/${WHATSAPP_NUMBER}`);
                     }}
                   >
+                    {/*    eslint-disable-next-line */}
                     <a>
                       <i className="fa fa-whatsapp"></i>
                     </a>

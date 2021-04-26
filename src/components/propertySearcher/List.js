@@ -160,7 +160,7 @@ const List = ({ filters, setFilters, setLoading }) => {
             marginTop: "30px",
           }}
           rowsPerPageOptions={[6, 9, 18, 36]}
-          labelRowsPerPage="Casas por pagina"
+          labelRowsPerPage={window.innerWidth > 600 ? "Casas por pagina" : ""}
           component="div"
           count={totalRows}
           rowsPerPage={rowsPerPage}

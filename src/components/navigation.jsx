@@ -40,6 +40,7 @@ export const Navigation = (props) => {
         >
           <ul className="nav navbar-nav navbar-right">
             <li>
+              {/*    eslint-disable-next-line */}
               <a
                 onClick={() => {
                   if (window.location.pathname === "/") {
@@ -54,6 +55,7 @@ export const Navigation = (props) => {
               </a>
             </li>
             <li>
+              {/*    eslint-disable-next-line */}
               <a
                 onClick={() => {
                   if (window.location.pathname === "/") {
@@ -68,6 +70,7 @@ export const Navigation = (props) => {
               </a>
             </li>
             <li>
+              {/*    eslint-disable-next-line */}
               <a
                 onClick={() => {
                   if (window.location.pathname === "/") {
@@ -83,6 +86,7 @@ export const Navigation = (props) => {
             </li>
 
             <li>
+              {/*    eslint-disable-next-line */}
               <a
                 onClick={() => {
                   if (window.location.pathname === "/") {
@@ -98,6 +102,7 @@ export const Navigation = (props) => {
             </li>
 
             <li>
+              {/*    eslint-disable-next-line */}
               <a
                 className="page-scroll  "
                 onClick={() => {
@@ -108,6 +113,7 @@ export const Navigation = (props) => {
               </a>
             </li>
             <li>
+              {/*    eslint-disable-next-line */}
               <a
                 onClick={() => {
                   if (window.location.pathname === "/") {

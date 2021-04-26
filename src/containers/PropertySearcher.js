@@ -98,7 +98,10 @@ const PropertySearcher = () => {
           squareMeters={squareMeters}
           setSquareMeters={setSquareMeters}
         />
-        <Box className={classes.list}>
+        <Box
+          className={classes.list}
+          style={window.innerWidth < 600 ? { marginLeft: 0 } : null}
+        >
           {loading ? (
             <CircularProgress />
           ) : (
