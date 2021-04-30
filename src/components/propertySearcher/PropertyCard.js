@@ -16,6 +16,7 @@ import LocationOnIcon from "@material-ui/icons/LocationOn";
 import { formatMoney, removeCamelCase } from "../../utils/format";
 import InfoIcon from "./IconInfo";
 import ShareLinkModal from "./ShareLinkModal";
+import { PLACEHOLDER_IMG } from "../../data/datos";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -113,7 +114,9 @@ const PropertyCard = ({ property, isSmall }) => {
           window.open(`/propiedades/${property.id}`);
         }}
         style={{
-          backgroundImage: `url(${property.fotoPrincipal})`,
+          backgroundImage: `url(${
+            property.fotoPrincipal ? property.fotoPrincipal : PLACEHOLDER_IMG
+          })`,
           backgroundSize: "100% 100%",
           height: isSmall ? "0px" : "250px",
         }}

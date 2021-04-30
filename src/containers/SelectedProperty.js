@@ -32,7 +32,7 @@ import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import MapComponent from "../components/MapComponent";
-import { WHATSAPP_NUMBER } from "../data/datos";
+import { WHATSAPP_NUMBER, PLACEHOLDER_IMG } from "../data/datos";
 
 dayjs.extend(relativeTime);
 dayjs.locale("es");
@@ -207,35 +207,45 @@ const PropertySearcher = () => {
         <CircularProgress />
       ) : (
         <Grid>
-          {/*  <Header /> */}
           <Box className={classes.imgContainer}>
-            <img
-              src={selectedProperty.fotoPrincipal}
-              alt="propiedad"
-              className={classes.mainImg}
-            />
-            {selectedProperty.archivos.length &&
-            selectedProperty.archivos.length > 2 ? (
-              <Grid style={{ objectFit: "contain" }}>
-                <img
-                  src={selectedProperty.archivos[1]}
-                  alt="propiedad"
-                  className={classes.midImg}
-                />
-                <img
-                  src={selectedProperty.archivos[2]}
-                  alt="propiedad"
-                  className={classes.midImg}
-                />
-              </Grid>
+            {selectedProperty.archivos.length ? (
+              <img
+                src={selectedProperty.archivos[0]}
+                alt="propiedad"
+                className={classes.mainImg}
+              />
             ) : (
-              <Grid style={{ objectFit: "contain" }}>
-                <img
-                  src={selectedProperty.archivos[1]}
-                  alt="propiedad"
-                  className={classes.mainImg}
-                />
-              </Grid>
+              <img
+                src={PLACEHOLDER_IMG}
+                alt="propiedad"
+                className={classes.mainImg}
+              />
+            )}
+            {selectedProperty.archivos.length > 1 ? (
+              <img
+                src={selectedProperty.archivos[1]}
+                alt="propiedad"
+                className={classes.mainImg}
+              />
+            ) : (
+              <img
+                src={PLACEHOLDER_IMG}
+                alt="propiedad"
+                className={classes.mainImg}
+              />
+            )}
+            {selectedProperty.archivos.length > 2 ? (
+              <img
+                src={selectedProperty.archivos[2]}
+                alt="propiedad"
+                className={classes.mainImg}
+              />
+            ) : (
+              <img
+                src={PLACEHOLDER_IMG}
+                alt="propiedad"
+                className={classes.mainImg}
+              />
             )}
           </Box>
           <Grid
