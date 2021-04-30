@@ -105,6 +105,7 @@ export const Navigation = (props) => {
               {/*    eslint-disable-next-line */}
               <a
                 className="page-scroll  "
+                style={{ cursor: "pointer" }}
                 onClick={() => {
                   history.push("/propiedades");
                 }}
