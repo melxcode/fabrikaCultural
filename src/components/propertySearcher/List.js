@@ -28,6 +28,8 @@ const List = ({ filters, setFilters, setLoading }) => {
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   };
 
   useEffect(() => {
