@@ -9,6 +9,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Contact as Footer } from "../components/home/contact";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import { WHATSAPP_NUMBER } from "../data/datos";
+import { getHouses } from "../firebase/";
+import { useDispatch } from "react-redux";
+import { setProperties } from "../store/actions/propertyActions";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -49,10 +52,17 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
   },
+  loading: {
+    left: "50%",
+    margin: "-25px 0 0 -25px",
+    position: "absolute",
+    top: "50vh",
+  },
 }));
 
 const PropertySearcher = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const [landingPageData, setLandingPageData] = useState({});
   const [filters, setFilters] = useState([]);
@@ -69,7 +79,15 @@ const PropertySearcher = () => {
   });
   useEffect(() => {
     setLandingPageData(JsonData);
-  }, []);
+    const fetchHouses = async () => {
+      setLoading(true);
+      const propertyList = await getHouses();
+      dispatch(setProperties(propertyList));
+      setLoading(false);
+    };
+
+    fetchHouses();
+  }, [dispatch]);
 
   return (
     <Grid>
@@ -103,7 +121,7 @@ const PropertySearcher = () => {
           style={window.innerWidth < 600 ? { marginLeft: 0 } : null}
         >
           {loading ? (
-            <CircularProgress />
+            <CircularProgress className={classes.loading} />
           ) : (
             <List
               filters={filters}

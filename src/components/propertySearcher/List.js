@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import PropertyCard from "./PropertyCard";
 import { useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
-import { Grid } from "@material-ui/core";
+import { Grid, Typography, Box } from "@material-ui/core";
 import TablePagination from "@material-ui/core/TablePagination";
-
+import SearchIcon from "@material-ui/icons/Search";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -151,7 +151,10 @@ const List = ({ filters, setFilters, setLoading }) => {
               return <PropertyCard key={property.id} property={property} />;
             })
         ) : (
-          <h1>No se han encontrado propiedades</h1>
+          <Box>
+            <SearchIcon />
+            <Typography>No se encontraron propiedades</Typography>
+          </Box>
         )}
       </Grid>
       {listProperties.length > 0 && (

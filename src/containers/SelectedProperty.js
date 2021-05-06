@@ -33,6 +33,9 @@ import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import MapComponent from "../components/MapComponent";
 import { WHATSAPP_NUMBER, PLACEHOLDER_IMG } from "../data/datos";
+import { getHouses } from "../firebase/";
+import { useDispatch } from "react-redux";
+import { setProperties } from "../store/actions/propertyActions";
 
 dayjs.extend(relativeTime);
 dayjs.locale("es");
@@ -173,6 +176,8 @@ const PropertySearcher = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const [size, setSize] = useState(window.innerWidth);
+  const dispatch = useDispatch();
+
   let action;
   window.onresize = function () {
     clearTimeout(action);
@@ -196,10 +201,19 @@ const PropertySearcher = () => {
   };
 
   useEffect(() => {
-    const property = properties.filter((item) => item.id === id);
-    setSelectedProperty(property[0]);
-    setGralData(propertyData(property[0]));
-  }, [properties, id]);
+    const fetchHouses = async () => {
+      const propertyList = await getHouses();
+
+      const property = propertyList.filter((item) => item.id === id);
+      const selectedProperty = property[0];
+
+      setSelectedProperty(selectedProperty);
+      setGralData(propertyData(selectedProperty));
+      dispatch(setProperties(propertyList));
+    };
+
+    fetchHouses();
+  }, [properties, id, dispatch]);
 
   return (
     <Grid className={classes.root}>
@@ -324,7 +338,7 @@ const PropertySearcher = () => {
                     aria-labelledby="nested-list-subheader"
                     className={classes.list}
                   >
-                    {gralData.generales.map((property) => (
+                    {gralData.generales?.map((property) => (
                       <ListItem button className={classes.listItem}>
                         <Typography>
                           <ListItemIcon className={classes.icon}>
@@ -355,7 +369,7 @@ const PropertySearcher = () => {
                     aria-labelledby="nested-list-subheader"
                     className={classes.list}
                   >
-                    {gralData.detalles.map((property, i) => (
+                    {gralData.detalles?.map((property, i) => (
                       <ListItem button className={classes.listItem}>
                         <Typography>
                           <ListItemIcon>{property.icon}</ListItemIcon>
