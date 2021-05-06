@@ -8,12 +8,25 @@ import { Services } from "../components/home/services";
 import { Testimonials } from "../components/home/testimonials";
 import { Contact } from "../components/home/contact";
 import JsonData from "../data/Textos.json";
+import { getHouses } from "../firebase/";
+import { useDispatch } from "react-redux";
+import { setProperties } from "../store/actions/propertyActions";
 
 const Home = () => {
   const [landingPageData, setLandingPageData] = useState({});
+  const dispatch = useDispatch();
+
   useEffect(() => {
     setLandingPageData(JsonData);
-  }, []);
+
+    const fetchHouses = async () => {
+      const propertyList = await getHouses();
+      dispatch(setProperties(propertyList));
+    };
+
+    fetchHouses();
+  }, [dispatch]);
+
   return (
     <Grid>
       <Navigation />

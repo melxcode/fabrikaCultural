@@ -1,1 +1,2 @@
 export const SET_FILTERS = "SET_FILTERS";
+export const SET_PROPERTIES = "SET_PROPERTIES";
