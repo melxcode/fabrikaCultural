@@ -132,7 +132,6 @@ const useStyles = makeStyles((theme) => ({
   },
   midImg: {
     height: "50%",
-    width: "100%",
   },
   sameZoneProperty: { display: "flex" },
   divider: {
@@ -181,7 +180,7 @@ const PropertySearcher = () => {
   let action;
   window.onresize = function () {
     clearTimeout(action);
-    action = setTimeout(setSize(window.innerWidth), 100);
+    action = setTimeout(setSize(window.screen.width), 100);
   };
   const openImageViewer = useCallback((index) => {
     setCurrentImage(index);
@@ -224,12 +223,14 @@ const PropertySearcher = () => {
           <Box className={classes.imgContainer}>
             {selectedProperty.archivos.length ? (
               <img
+                style={{ width: size / 3 - 5 }}
                 src={selectedProperty.archivos[0]}
                 alt="propiedad"
                 className={classes.mainImg}
               />
             ) : (
               <img
+                style={{ width: size / 3 - 5 }}
                 src={PLACEHOLDER_IMG}
                 alt="propiedad"
                 className={classes.mainImg}
@@ -237,12 +238,14 @@ const PropertySearcher = () => {
             )}
             {selectedProperty.archivos.length > 1 ? (
               <img
+                style={{ width: size / 3 - 5 }}
                 src={selectedProperty.archivos[1]}
                 alt="propiedad"
                 className={classes.mainImg}
               />
             ) : (
               <img
+                style={{ width: size / 3 - 5 }}
                 src={PLACEHOLDER_IMG}
                 alt="propiedad"
                 className={classes.mainImg}
@@ -250,12 +253,14 @@ const PropertySearcher = () => {
             )}
             {selectedProperty.archivos.length > 2 ? (
               <img
+                style={{ width: size / 3 - 5 }}
                 src={selectedProperty.archivos[2]}
                 alt="propiedad"
                 className={classes.mainImg}
               />
             ) : (
               <img
+                style={{ width: size / 3 - 5 }}
                 src={PLACEHOLDER_IMG}
                 alt="propiedad"
                 className={classes.mainImg}
@@ -447,10 +452,13 @@ const PropertySearcher = () => {
               }}
             >
               <Carousel
-                width="70%"
+                width={0.7 * size}
                 className={classes.carrousel}
                 dynamicHeight={true}
                 infiniteLoop
+                renderThumbs={() => {
+                  return;
+                }}
                 autoPlay
                 showArrows={false}
                 stopOnHover

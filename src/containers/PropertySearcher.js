@@ -84,6 +84,8 @@ const PropertySearcher = () => {
       const propertyList = await getHouses();
       dispatch(setProperties(propertyList));
       setLoading(false);
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
     };
 
     fetchHouses();
