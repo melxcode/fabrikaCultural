@@ -5,7 +5,6 @@ import { Header } from "../components/home/header";
 import { Features } from "../components/home/features";
 import { About } from "../components/home/about";
 import { Services } from "../components/home/services";
-import { Testimonials } from "../components/home/testimonials";
 import { Contact } from "../components/home/contact";
 import JsonData from "../data/Textos.json";
 import { getHouses } from "../firebase/";
@@ -34,7 +33,6 @@ const Home = () => {
       <Features data={landingPageData.Features} />
       <About data={landingPageData.About} />
       <Services data={landingPageData.Services} />
-      <Testimonials data={landingPageData.Testimonials} />
       <Contact data={landingPageData.Contact} />
     </Grid>
   );

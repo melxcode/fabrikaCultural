@@ -237,6 +237,7 @@ const Filter = ({
           { field: "filterTypeProperty", value: "campo", name: "Campo" },
           { field: "filterTypeProperty", value: "loteo", name: "Loteo" },
           { field: "filterTypeProperty", value: "galpon", name: "Galpon" },
+          { field: "filterTypeProperty", value: "hotel", name: "Hotel" },
         ]}
         fullWidth
         onKeyDown={(e) => {
