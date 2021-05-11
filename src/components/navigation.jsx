@@ -88,22 +88,6 @@ export const Navigation = (props) => {
             <li>
               {/*    eslint-disable-next-line */}
               <a
-                onClick={() => {
-                  if (window.location.pathname === "/") {
-                    return;
-                  }
-                  history.push("/");
-                }}
-                href={window.location.pathname === "/" ? "#testimonials" : null}
-                className="page-scroll"
-              >
-                Testimonios
-              </a>
-            </li>
-
-            <li>
-              {/*    eslint-disable-next-line */}
-              <a
                 className="page-scroll  "
                 style={{ cursor: "pointer" }}
                 onClick={() => {

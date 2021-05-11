@@ -25,4 +25,15 @@ const getHouses = async () => {
   return properties;
 };
 
-export { getHouses };
+const getNumber = async () => {
+  const number = await database
+    .ref("numero")
+    .once("value")
+    .then((snap) => {
+      return snap.val();
+    });
+
+  return number;
+};
+
+export { getHouses, getNumber };

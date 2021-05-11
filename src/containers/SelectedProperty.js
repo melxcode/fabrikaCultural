@@ -33,7 +33,7 @@ import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import MapComponent from "../components/MapComponent";
 import { WHATSAPP_NUMBER, PLACEHOLDER_IMG } from "../data/datos";
-import { getHouses } from "../firebase/";
+import { getHouses, getNumber } from "../firebase/";
 import { useDispatch } from "react-redux";
 import { setProperties } from "../store/actions/propertyActions";
 
@@ -176,6 +176,7 @@ const PropertySearcher = () => {
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const [size, setSize] = useState(window.innerWidth);
   const dispatch = useDispatch();
+  const [number, setNumber] = useState("");
 
   let action;
   window.onresize = function () {
@@ -202,7 +203,8 @@ const PropertySearcher = () => {
   useEffect(() => {
     const fetchHouses = async () => {
       const propertyList = await getHouses();
-
+      const number = await getNumber();
+      setNumber(number || WHATSAPP_NUMBER);
       const property = propertyList.filter((item) => item.id === id);
       const selectedProperty = property[0];
 
@@ -527,7 +529,7 @@ const PropertySearcher = () => {
             </Box>
           </Grid>
           <a
-            href={`https://wa.me/${WHATSAPP_NUMBER}`}
+            href={`https://wa.me/${number}`}
             className={classes.whatsapp}
             target="_blank"
             rel="noreferrer"

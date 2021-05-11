@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import MapComponent from "../MapComponent";
 import { WHATSAPP_NUMBER } from "../../data/datos";
+import { getNumber } from "../../firebase";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,6 +38,17 @@ const useStyles = makeStyles((theme) => ({
 
 export const Contact = (props) => {
   const classes = useStyles();
+  const [number, setNumber] = useState("");
+
+  useEffect(() => {
+    const fetchNumber = async () => {
+      const number = await getNumber();
+      setNumber(number || WHATSAPP_NUMBER);
+    };
+
+    fetchNumber();
+  }, []);
+
   return (
     <div>
       <div id="contact">
@@ -112,7 +124,7 @@ export const Contact = (props) => {
 
                   <li
                     onClick={() => {
-                      window.open(`https://wa.me/${WHATSAPP_NUMBER}`);
+                      window.open(`https://wa.me/${number}`);
                     }}
                   >
                     {/*    eslint-disable-next-line */}

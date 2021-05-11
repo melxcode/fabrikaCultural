@@ -9,7 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Contact as Footer } from "../components/home/contact";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import { WHATSAPP_NUMBER } from "../data/datos";
-import { getHouses } from "../firebase/";
+import { getHouses, getNumber } from "../firebase/";
 import { useDispatch } from "react-redux";
 import { setProperties } from "../store/actions/propertyActions";
 
@@ -67,6 +67,7 @@ const PropertySearcher = () => {
   const [landingPageData, setLandingPageData] = useState({});
   const [filters, setFilters] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [number, setNumber] = useState("");
   const [selectedCurrency, setSelectedCurrency] = useState("");
 
   const [price, setPrice] = useState({
@@ -82,6 +83,8 @@ const PropertySearcher = () => {
     const fetchHouses = async () => {
       setLoading(true);
       const propertyList = await getHouses();
+      const number = await getNumber();
+      setNumber(number || WHATSAPP_NUMBER);
       dispatch(setProperties(propertyList));
       setLoading(false);
       document.body.scrollTop = 0;
@@ -135,7 +138,7 @@ const PropertySearcher = () => {
       </Grid>
       <Footer data={landingPageData.Contact} />
       <a
-        href={`https://wa.me/${WHATSAPP_NUMBER}`}
+        href={`https://wa.me/${number}`}
         className={classes.whatsapp}
         target="_blank"
         rel="noreferrer"
