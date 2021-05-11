@@ -183,7 +183,7 @@ const Filter = ({
           { field: "filterZone", value: "villaElena", name: "Villa Elena" },
           { field: "filterZone", value: "cortaderas", name: "Cortaderas" },
           { field: "filterZone", value: "losMolles", name: "Los Molles" },
-          { field: "filterZone", value: "cortaderas", name: "Cortaderas" },
+          { field: "filterZone", value: "traslasierra", name: "Traslasierra" },
         ]}
         fullWidth
         getOptionLabel={(option) => option.name}
