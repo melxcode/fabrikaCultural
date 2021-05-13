@@ -180,10 +180,34 @@ const Filter = ({
           { field: "filterZone", value: "merlo", name: "Merlo" },
           { field: "filterZone", value: "cerroDeOro", name: "Cerro De Oro" },
           { field: "filterZone", value: "carpinteria", name: "Carpinteria" },
+          { field: "filterZone", value: "losMolles", name: "Los Molles" },
           { field: "filterZone", value: "villaElena", name: "Villa Elena" },
           { field: "filterZone", value: "cortaderas", name: "Cortaderas" },
-          { field: "filterZone", value: "losMolles", name: "Los Molles" },
+          { field: "filterZone", value: "villaLarca", name: "Villa Larca" },
+          { field: "filterZone", value: "papagayo", name: "Papagayo" },
+          { field: "filterZone", value: "piedraBlanca", name: "Piedra Blanca" },
+          { field: "filterZone", value: "achiras", name: "Achiras" },
+          {
+            field: "filterZone",
+            value: "villaMercedes",
+            name: "Villa Mercedes",
+          },
+          { field: "filterZone", value: "sanLuis", name: "San Luis" },
+          { field: "filterZone", value: "elTrapiche", name: "El Trapiche" },
+          { field: "filterZone", value: "elVolcan", name: "El Volcan" },
+          {
+            field: "filterZone",
+            value: "potreroDeLosFunes",
+            name: "Potrero de los funes",
+          },
           { field: "filterZone", value: "traslasierra", name: "Traslasierra" },
+          { field: "filterZone", value: "juanaKoslay", name: "Juana Koslay" },
+          { field: "filterZone", value: "laPunta", name: "La Punta" },
+          { field: "filterZone", value: "balde", name: "Balde" },
+
+          { field: "filterZone", value: "sanJeronimo", name: "San Jeronimo" },
+          { field: "filterZone", value: "otrasZonas", name: "Otras Zonas" },
+          { field: "filterZone", value: "cordoba", name: "Cordoba" },
         ]}
         fullWidth
         getOptionLabel={(option) => option.name}
@@ -235,7 +259,13 @@ const Filter = ({
           { field: "filterTypeProperty", value: "casa", name: "Casa" },
           { field: "filterTypeProperty", value: "cabaña", name: "Cabaña" },
           { field: "filterTypeProperty", value: "campo", name: "Campo" },
+          {
+            field: "filterTypeProperty",
+            value: "complejoTuristico",
+            name: "Complejo Turistico",
+          },
           { field: "filterTypeProperty", value: "loteo", name: "Loteo" },
+          { field: "filterTypeProperty", value: "lotes", name: "Lotes" },
           { field: "filterTypeProperty", value: "galpon", name: "Galpon" },
           { field: "filterTypeProperty", value: "hotel", name: "Hotel" },
         ]}

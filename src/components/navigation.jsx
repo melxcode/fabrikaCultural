@@ -14,7 +14,6 @@ export const Navigation = (props) => {
             data-toggle="collapse"
             data-target="#bs-example-navbar-collapse-1"
           >
-            {" "}
             <span className="sr-only">Toggle navigation</span>{" "}
             <span className="icon-bar"></span>{" "}
             <span className="icon-bar"></span>{" "}
@@ -23,6 +22,7 @@ export const Navigation = (props) => {
           <a
             className="navbar-brand page-scroll"
             href="#page-top"
+            style={{ position: "relative", left: "20px" }}
             onClick={() => {
               if (window.location.pathname === "/") {
                 return;
@@ -30,10 +30,22 @@ export const Navigation = (props) => {
               history.push("/");
             }}
           >
+            <img
+              src="https://i.ibb.co/ZxrG2Qg/logocym.png"
+              alt="logo"
+              width="30"
+              height="30"
+              style={{
+                zIndex: 99999,
+                marginBottom: "50px",
+                position: "absolute",
+                left: " -23px",
+                top: "11px",
+              }}
+            />{" "}
             C&M Inmobiliaria
           </a>{" "}
         </div>
-
         <div
           className="collapse navbar-collapse"
           id="bs-example-navbar-collapse-1"
