@@ -4,6 +4,7 @@ import Home from "./containers/Home";
 import PropertySearcher from "./containers/PropertySearcher";
 import SelectedProperty from "./containers/SelectedProperty";
 import SmoothScroll from "smooth-scroll";
+import NewHouse from "./containers/NewHouse";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/" exact component={Home} />
         <Route path="/propiedades" exact component={PropertySearcher} />
         <Route path="/propiedades/:id" exact component={SelectedProperty} />
+        <Route path="/nueva" exact component={NewHouse} />
       </Switch>
     </Router>
   );

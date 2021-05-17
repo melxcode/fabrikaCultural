@@ -1,5 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/database";
+import axios from "axios";
+import { API_KEY, IMAGE_HOST_URL } from "../config";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDCxp_LRfRelUVnbdoes3V8drrCLRWFslA",
@@ -19,7 +21,11 @@ const getHouses = async () => {
     .ref("propiedades")
     .once("value")
     .then((snap) => {
-      return snap.val();
+      const items = [];
+      snap.forEach((itemSnap) => {
+        items.push(itemSnap.val());
+      });
+      return items;
     });
 
   return properties;
@@ -36,4 +42,31 @@ const getNumber = async () => {
   return number;
 };
 
-export { getHouses, getNumber };
+const createHouse = async (formData) => {
+  const rootRef = firebase.database().ref("/");
+  const properties = rootRef.child("propiedades");
+  await properties.push(formData);
+};
+
+const uploadPhoto = async (image) => {
+  let newImage;
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    };
+    //retirar expiration=600&
+    const url = new URL(`${IMAGE_HOST_URL}/1/upload?key=${API_KEY}`);
+    const formData = new FormData();
+    formData.append("image", image);
+
+    const response = await axios.post(url, formData, config);
+    newImage = response.data.data.url;
+    return newImage;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { getHouses, getNumber, createHouse, uploadPhoto };

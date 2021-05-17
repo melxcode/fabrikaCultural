@@ -208,7 +208,10 @@ const PropertySearcher = () => {
       const property = propertyList.filter((item) => item.id === id);
       const selectedProperty = property[0];
 
-      setSelectedProperty(selectedProperty);
+      setSelectedProperty({
+        ...selectedProperty,
+        archivos: selectedProperty.archivos || [],
+      });
       setGralData(propertyData(selectedProperty));
       dispatch(setProperties(propertyList));
     };
@@ -500,7 +503,12 @@ const PropertySearcher = () => {
             )}
 
             <Box style={{ marginTop: "50px" }}>
-              <MapComponent position={selectedProperty.posicion} height="40%" />
+              {selectedProperty.posicion?.le && (
+                <MapComponent
+                  position={selectedProperty.posicion}
+                  height="40%"
+                />
+              )}
             </Box>
 
             <Box style={{ marginTop: "50px" }}>
