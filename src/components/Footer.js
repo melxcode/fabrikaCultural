@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     justifyContent: "space-between",
-    background: "black",
+    background: "#161C24",
     height: "215px",
   },
   map: {

@@ -43,7 +43,7 @@ dayjs.locale("es");
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    background: "black",
+    background: "#161C24",
   },
   list: {
     width: "100%",

@@ -4,7 +4,7 @@ html {
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
   color: white;
-  background-color: black;
+  background-color: #161c24;
   font-weight: 400;
   width: 100% !important;
   height: 100% !important;
@@ -77,7 +77,7 @@ hr {
   transition: all 0.8s;
 }
 #menu.navbar-default {
-  background-color: black;
+  background-color: #161c24;
   border-color: rgba(231, 231, 231, 0);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
@@ -249,7 +249,7 @@ header .intro-text {
 /* Features Section */
 #features {
   padding: 100px 0;
-  background: black;
+  background: #161c24;
   color: white;
 }
 #features i.fa {
@@ -314,7 +314,7 @@ header .intro-text {
 /* Services Section */
 #services {
   padding: 100px 0;
-  background: black;
+  background: #161c24;
   color: #fff;
 }
 #services .service-desc {
@@ -465,7 +465,7 @@ header .intro-text {
 /* Contact Section */
 #contact {
   padding: 100px 0 60px 0;
-  background: black;
+  background: #161c24;
   color: rgba(255, 255, 255, 0.75);
 }
 #contact .section-title {

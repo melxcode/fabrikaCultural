@@ -17,10 +17,12 @@ import * as Yup from "yup";
 import PublishIcon from "@material-ui/icons/Publish";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { withStyles } from "@material-ui/core/styles";
-import { green } from "@material-ui/core/colors";
+import { green, blue } from "@material-ui/core/colors";
 import Checkbox from "@material-ui/core/Checkbox";
 import { createHouse, uploadPhoto, getHouses } from "../firebase";
 import PhotoContainer from "../components/PhotoContainer";
+import Snackbar from "@material-ui/core/Snackbar";
+import SnackbarContent from "@material-ui/core/SnackbarContent";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "20px",
   },
   container: {
+    backgroundClip: "#161C24",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -40,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
   photoContainer: {
     marginTop: "20px",
     display: "flex",
+    flexWrap: "wrap",
   },
 
   newPhotoBox: {
@@ -64,6 +68,10 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "25px",
     marginBottom: "25px",
     width: "100%",
+    backgroundColor: blue[900],
+  },
+  Snackbar: {
+    backgroundColor: "#0dc662",
   },
 }));
 
@@ -80,6 +88,8 @@ const GreenCheckbox = withStyles({
 const NewHouse = () => {
   const classes = useStyles();
   const [loading, setLoading] = useState(false);
+  const [openNotification, setOpenNotification] = useState(false);
+
   const firstPhoto = useRef(null);
   const [currentId, setCurrentId] = useState(0);
   const handleAttach = () => {
@@ -182,6 +192,11 @@ const NewHouse = () => {
         };
 
         await createHouse(houseData);
+        setOpenNotification(true);
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 4000);
       } catch (error) {
         console.error(error, "errorrr");
       }
@@ -214,14 +229,28 @@ const NewHouse = () => {
     return sortedList;
   }
 
+  const handleCloseNotification = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpenNotification(false);
+  };
+
   return (
     <FormikProvider value={formik}>
       <Grid className={classes.container}>
         <Card className={classes.root}>
           <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
             <Grid container xs={12} sx={{ p: 20 }}>
-              <Typography variant="h4" color="primary">
-                Subi una nueva propiedad !{" "}
+              <Typography
+                variant="h4"
+                color="primary"
+                gutterBottom
+                style={{
+                  fontWeight: "bold",
+                }}
+              >
+                CREAR NUEVA PROPIEDAD
               </Typography>
               <Grid item xs={12} className={classes.input}>
                 <TextField
@@ -744,7 +773,7 @@ const NewHouse = () => {
                         {...params}
                         variant="outlined"
                         label="Foto Principal"
-                        placeholder="Clickear icono para subir Foto principal"
+                        placeholder="Clickear icono para subir La foto que se vera en la tarjeta"
                         onBlur={handleBlur}
                         InputProps={{
                           ...params.InputProps,
@@ -799,6 +828,17 @@ const NewHouse = () => {
                 label="Disponible Alquiler Turistico"
               />
             </Grid>
+            <Snackbar
+              open={openNotification}
+              autoHideDuration={3000}
+              style={{ left: "70%", bottom: "20px" }}
+              onClose={handleCloseNotification}
+            >
+              <SnackbarContent
+                message={"Propiedad guardada con exito !"}
+                className={classes.Snackbar}
+              />
+            </Snackbar>
             <Box sx={{ flex: 1 }}>
               <Button
                 type="submit"
