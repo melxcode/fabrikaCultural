@@ -18,7 +18,7 @@ const database = firebase.database();
 
 const getHouses = async () => {
   const properties = await database
-    .ref("propiedades")
+    .ref("properties")
     .once("value")
     .then((snap) => {
       const items = [];
@@ -44,7 +44,7 @@ const getNumber = async () => {
 
 const createHouse = async (formData) => {
   const rootRef = firebase.database().ref("/");
-  const properties = rootRef.child("propiedades");
+  const properties = rootRef.child("properties");
   await properties.push(formData);
 };
 

@@ -89,8 +89,16 @@ const NewHouse = () => {
   useEffect(() => {
     const fetchHouses = async () => {
       const propertyList = await getHouses();
-      console.log(propertyList);
-      setCurrentId(propertyList.length);
+      const list = propertyList.map((item) => {
+        return {
+          ...item,
+          id: Number(item.id),
+        };
+      });
+
+      const sortedList = numericalSort(list);
+      const sortedListLastItem = sortedList[sortedList.length - 1];
+      setCurrentId(sortedListLastItem.id);
     };
     fetchHouses();
   }, []);
@@ -155,6 +163,7 @@ const NewHouse = () => {
         if (!currentId) {
           return;
         }
+
         setLoading(true);
         const id = currentId + 1;
         const houseData = {
@@ -168,6 +177,8 @@ const NewHouse = () => {
           requisitos: values.requisitos.map((item) => item.name),
           fotoPrincipal: values.fotoPrincipal.url,
           publicadoEn: parseDate(),
+          posicion: values.posicion.split(","),
+          archivos: [values.fotoPrincipal.url, ...values.archivos],
         };
 
         await createHouse(houseData);
@@ -187,6 +198,21 @@ const NewHouse = () => {
     handleBlur,
     values,
   } = formik;
+
+  function numericalSort(list) {
+    const sortedList = list.sort(function (a, b) {
+      if (a.id > b.id) {
+        return 1;
+      }
+      if (a.id < b.id) {
+        return -1;
+      }
+
+      return 0;
+    });
+
+    return sortedList;
+  }
 
   return (
     <FormikProvider value={formik}>
@@ -229,10 +255,14 @@ const NewHouse = () => {
               <Grid item xs={12} className={classes.input}>
                 <TextField
                   label="Precio"
-                  placeholder="Precio de la propiedad"
+                  placeholder="Precio de la propiedad "
                   onChange={handleChange}
                   onBlur={handleBlur}
                   name="precio"
+                  onKeyDown={(e) =>
+                    (e.keyCode === 69 || e.keyCode === 190) &&
+                    e.preventDefault()
+                  }
                   error={Boolean(touched.precio && errors.precio)}
                   helperText={touched.precio && errors.precio}
                   value={values.precio}

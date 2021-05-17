@@ -419,7 +419,7 @@ const PropertySearcher = () => {
                         flexDirection: "column",
                       }}
                     >
-                      <Typography>Requisitos</Typography>
+                      <Typography>Extras</Typography>
 
                       {selectedProperty.requisitos.map((item) => (
                         <Typography>
@@ -503,7 +503,7 @@ const PropertySearcher = () => {
             )}
 
             <Box style={{ marginTop: "50px" }}>
-              {selectedProperty.posicion?.le && (
+              {selectedProperty.posicion?.length && (
                 <MapComponent
                   position={selectedProperty.posicion}
                   height="40%"
