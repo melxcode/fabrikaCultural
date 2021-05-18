@@ -101,7 +101,7 @@ const ShareLinkModal = ({ openModal, setOpenModal, userPassword }) => {
           <Snackbar
             open={openNotification}
             autoHideDuration={3000}
-            style={{ position: "absolute", top: "200px" }}
+            style={{ position: "absolute", top: "240px" }}
             onClose={handleCloseNotification}
           >
             <SnackbarContent

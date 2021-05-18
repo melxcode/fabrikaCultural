@@ -1,3 +1,4 @@
+import { BIG_LOGO } from "../../data/datos";
 export const Header = (props) => {
   return (
     <header id="header">
@@ -7,14 +8,10 @@ export const Header = (props) => {
             <div className="row">
               <div className="col-md-8 col-md-offset-2 intro-text">
                 <img
-                  src="https://i.ibb.co/ZxrG2Qg/logocym.png"
+                  src={BIG_LOGO}
                   alt="logo"
                   style={{ zIndex: 99999, marginBottom: "50px" }}
                 />
-                <h2>
-                  {props.data ? props.data.title : "Loading"}
-                  <span></span>
-                </h2>
                 <p>{props.data ? props.data.paragraph : "Loading"}</p>
                 <a
                   href="#features"
