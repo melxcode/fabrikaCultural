@@ -1,6 +1,5 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { BIG_LOGO } from "../data/datos";
 
 export const Navigation = (props) => {
   const history = useHistory();
