@@ -42,6 +42,17 @@ const getNumber = async () => {
   return number;
 };
 
+const getPassword = async () => {
+  const number = await database
+    .ref("password")
+    .once("value")
+    .then((snap) => {
+      return snap.val();
+    });
+
+  return number;
+};
+
 const createHouse = async (formData) => {
   const rootRef = firebase.database().ref("/");
   const properties = rootRef.child("properties");
@@ -56,7 +67,7 @@ const uploadPhoto = async (image) => {
         "Content-Type": "multipart/form-data",
       },
     };
-    //retirar expiration=600&
+
     const url = new URL(`${IMAGE_HOST_URL}/1/upload?key=${API_KEY}`);
     const formData = new FormData();
     formData.append("image", image);
@@ -69,4 +80,4 @@ const uploadPhoto = async (image) => {
   }
 };
 
-export { getHouses, getNumber, createHouse, uploadPhoto };
+export { getHouses, getNumber, createHouse, uploadPhoto, getPassword };
