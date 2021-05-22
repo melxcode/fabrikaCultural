@@ -213,7 +213,7 @@ const NewHouse = () => {
           posicion: values.posicion.split(","),
           archivos: [values.fotoPrincipal.url, ...values.archivos],
         };
-
+        console.log(houseData);
         await createHouse(houseData);
         setOpenNotification(true);
 
@@ -707,6 +707,10 @@ const NewHouse = () => {
                       { name: "Bosque Nativo" },
                       { name: "Vista a las sierras" },
                       { name: "Titulo perfecto" },
+                      { name: "Parquizado " },
+                      { name: "Lavadero" },
+                      { name: "Vestidor" },
+                      { name: "Terreno cercado" },
                     ]}
                     fullWidth
                     getOptionLabel={(option) => option.name}
@@ -832,7 +836,10 @@ const NewHouse = () => {
                 <Divider flexItem className={classes.divider} />
 
                 <Grid xs={12}>
-                  <Typography>Subi las fotos de la propiedad !</Typography>
+                  <Typography>
+                    Subi las fotos de la propiedad (Por favor No incluyas la
+                    foto principal, ya esta cargada por default )!
+                  </Typography>
                 </Grid>
 
                 <Grid xs={12} className={classes.photoSection}>
