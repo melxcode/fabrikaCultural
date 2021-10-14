@@ -67,7 +67,7 @@ export const Contact = (props) => {
           </div>
           <div className="col-md-3 col-md-offset-1 contact-info">
             <div className="contact-item">
-              <h3>Contact Info</h3>
+              <h3>Contacto</h3>
               <p>
                 <span>
                   <i className="fa fa-map-marker"></i> Direccion
