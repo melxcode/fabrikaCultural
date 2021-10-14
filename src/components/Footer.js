@@ -48,9 +48,7 @@ const Footer = () => {
         <Box className={classes.iconBox}>
           <IconButton
             onClick={() => {
-              window.open(
-                "https://www.facebook.com/CYM-Propiedades-114351933306683"
-              );
+              window.open("https://www.facebook.com/lafabrica2271");
             }}
           >
             <FacebookIcon className={classes.icon} />

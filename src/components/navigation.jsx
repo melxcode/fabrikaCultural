@@ -31,19 +31,20 @@ export const Navigation = (props) => {
             }}
           >
             <img
-              src="https://i.ibb.co/ZxrG2Qg/logocym.png"
+              src="/img/fondo.jpeg"
               alt="logo"
               width="30"
               height="30"
               style={{
                 zIndex: 99999,
+                borderRadius: "100%",
                 marginBottom: "50px",
                 position: "absolute",
                 left: " -23px",
                 top: "11px",
               }}
             />{" "}
-            C&M Inmobiliaria
+            LaFabricaCultural
           </a>{" "}
         </div>
         <div
@@ -51,21 +52,6 @@ export const Navigation = (props) => {
           id="bs-example-navbar-collapse-1"
         >
           <ul className="nav navbar-nav navbar-right">
-            <li>
-              {/*    eslint-disable-next-line */}
-              <a
-                onClick={() => {
-                  if (window.location.pathname === "/") {
-                    return;
-                  }
-                  history.push("/");
-                }}
-                href={window.location.pathname === "/" ? "#features" : null}
-                className="page-scroll"
-              >
-                Paso a paso
-              </a>
-            </li>
             <li>
               {/*    eslint-disable-next-line */}
               <a
@@ -90,6 +76,21 @@ export const Navigation = (props) => {
                   }
                   history.push("/");
                 }}
+                href={window.location.pathname === "/" ? "#features" : null}
+                className="page-scroll"
+              >
+                Orgullo
+              </a>
+            </li>
+            <li>
+              {/*    eslint-disable-next-line */}
+              <a
+                onClick={() => {
+                  if (window.location.pathname === "/") {
+                    return;
+                  }
+                  history.push("/");
+                }}
                 href={window.location.pathname === "/" ? "#services" : null}
                 className="page-scroll"
               >
@@ -97,18 +98,6 @@ export const Navigation = (props) => {
               </a>
             </li>
 
-            <li>
-              {/*    eslint-disable-next-line */}
-              <a
-                className="page-scroll  "
-                style={{ cursor: "pointer" }}
-                onClick={() => {
-                  history.push("/propiedades");
-                }}
-              >
-                Propiedades
-              </a>
-            </li>
             <li>
               {/*    eslint-disable-next-line */}
               <a

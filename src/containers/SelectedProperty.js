@@ -174,9 +174,9 @@ const PropertySearcher = () => {
   const properties = useSelector((state) => state.propertyReducer.properties);
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
-  const [size, setSize] = useState(window.innerWidth);
   const dispatch = useDispatch();
   const [number, setNumber] = useState("");
+  const [size, setSize] = useState(window.innerWidth);
 
   let action;
   window.onresize = function () {

@@ -42,8 +42,7 @@ export const Contact = (props) => {
 
   useEffect(() => {
     const fetchNumber = async () => {
-      const number = await getNumber();
-      setNumber(number || WHATSAPP_NUMBER);
+      setNumber(WHATSAPP_NUMBER);
     };
 
     fetchNumber();
@@ -57,14 +56,10 @@ export const Contact = (props) => {
             <div className="row">
               <div className="section-title">
                 <h2>Nuestra Ubicacion</h2>
-                <p>
-                  Encontranos de Lunes a Viernes de 9:00 a 12:30 y de 17:00 a
-                  20:00
-                </p>
               </div>
               <Box className={classes.map}>
                 <MapComponent
-                  position={[-32.334255, -65.013435]}
+                  position={[-32.355196, -64.995621]}
                   height="30%"
                 />
               </Box>
@@ -80,28 +75,13 @@ export const Contact = (props) => {
                 {props.data ? props.data.address : "loading"}
               </p>
             </div>
-            <div className="contact-item">
-              <p>
-                <span>
-                  <i className="fa fa-phone"></i> Telefono
-                </span>{" "}
-                {props.data ? props.data.phone : "loading"}
-              </p>
-            </div>
+
             <div className="contact-item">
               <p>
                 <span>
                   <i className="fa fa-phone"></i> WhatsApp
                 </span>{" "}
-                2664 035075 / 2657 630902
-              </p>
-            </div>
-            <div className="contact-item">
-              <p>
-                <span>
-                  <i className="fa fa-envelope-o"></i> Email
-                </span>{" "}
-                {props.data ? props.data.email : "loading"}
+                0266 448-2403
               </p>
             </div>
           </div>
@@ -111,9 +91,7 @@ export const Contact = (props) => {
                 <ul>
                   <li
                     onClick={() => {
-                      window.open(
-                        "https://www.facebook.com/CYM-Propiedades-114351933306683"
-                      );
+                      window.open("https://www.facebook.com/lafabrica2271");
                     }}
                   >
                     {/*    eslint-disable-next-line */}
@@ -132,6 +110,18 @@ export const Contact = (props) => {
                       <i className="fa fa-whatsapp"></i>
                     </a>
                   </li>
+                  <li
+                    onClick={() => {
+                      window.open(
+                        `https://www.instagram.com/lafabricacultural/`
+                      );
+                    }}
+                  >
+                    {/*    eslint-disable-next-line */}
+                    <a>
+                      <i className="fa fa-instagram"></i>
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -140,7 +130,7 @@ export const Contact = (props) => {
       </div>
       <div id="footer">
         <div className="container text-center">
-          <p>&copy; 2021 C&M Propiedades.</p>
+          <p>&copy; 2021 La Fabrica Cultural.</p>
         </div>
       </div>
     </div>

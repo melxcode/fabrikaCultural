@@ -10,14 +10,18 @@ export const Header = (props) => {
                 <img
                   src={BIG_LOGO}
                   alt="logo"
-                  style={{ zIndex: 99999, marginBottom: "50px" }}
+                  height="250"
+                  style={{
+                    zIndex: 99999,
+                    marginTop: "-225px",
+                  }}
                 />
                 <p>{props.data ? props.data.paragraph : "Loading"}</p>
                 <a
-                  href="#features"
+                  href="#contact"
                   className="btn btn-custom btn-lg page-scroll"
                 >
-                  Comenzar
+                  Como Llegar
                 </a>{" "}
               </div>
             </div>
